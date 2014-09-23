@@ -1,0 +1,281 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9239,        272]
+NotebookOptionsPosition[      8302,        234]
+NotebookOutlinePosition[      8679,        250]
+CellTagsIndexPosition[      8636,        247]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Modelo cont\[IAcute]nuo do sistema", "Section",
+ CellChangeTimes->{{3.619435006512678*^9, 3.619435018112342*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "0.2"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6194343742965174`*^9, 3.6194344142588034`*^9}, {
+  3.6194344578032937`*^9, 3.6194344723231244`*^9}, {3.6194346813710814`*^9, 
+  3.6194347113227944`*^9}, {3.6194369623075433`*^9, 3.6194369747952576`*^9}, {
+  3.619437631538821*^9, 3.6194376415153913`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "10", "}"}], ",", 
+     RowBox[{"{", "0", "}"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6194344754053*^9, 3.6194344999547048`*^9}, {
+  3.6194347184101996`*^9, 3.619434740634471*^9}, {3.6194369803785768`*^9, 
+  3.6194369952664285`*^9}, {3.619437649387842*^9, 3.6194376534030714`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Cs", "=", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619434502214834*^9, 3.619434522130973*^9}, {
+  3.619434752242135*^9, 3.619434756482377*^9}, {3.6194370010267577`*^9, 
+  3.619437003730912*^9}, {3.6194376592434053`*^9, 3.6194376618505545`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ds", "=", 
+   RowBox[{"{", 
+    RowBox[{"{", "0", "}"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6194345292953825`*^9, 3.6194345429781656`*^9}, {
+  3.619434760746621*^9, 3.6194347609066305`*^9}, {3.619437011850377*^9, 
+  3.619437011922381*^9}, {3.61943766666683*^9, 3.61943766683484*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SS", "=", 
+  RowBox[{"StateSpaceModel", "[", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "B", ",", "Cs", ",", "Ds"}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6194349024107237`*^9, 3.619434903074762*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  SubsuperscriptBox[
+   FormBox[
+    TagBox[
+     RowBox[{"(", "\[NoBreak]", GridBox[{
+        {
+         RowBox[{"-", "0.2`"}], "0", "10"},
+        {"1", "0", "0"},
+        {"0", "1", "0"}
+       },
+       AllowScriptLevelChange->False,
+       BaseStyle->{Deployed -> False},
+       GridBoxAlignment->{
+        "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+         "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+       GridBoxDividers->{
+        "Columns" -> {False, False, True, {False}, False}, 
+         "Rows" -> {False, False, True, {False}, False}},
+       GridBoxItemStyle->{
+        "ItemsIndexed" -> {{{1, 1}, {}} -> {
+            Deployed -> True, ShowStringCharacters -> False}, {{}, {1, 
+             1}} -> {Deployed -> True, ShowStringCharacters -> False}}},
+       GridBoxSpacings->{"Columns" -> {
+           Offset[0.27999999999999997`], {
+            Offset[0.7]}, 
+           Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+           Offset[0.2], {
+            Offset[0.4]}, 
+           Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+     Function[BoxForm`e$, 
+      MatrixForm[BoxForm`e$]]],
+    StandardForm], 
+   FormBox[
+    StyleBox["\<\"\[InvisibleSpace]\"\>",
+     ShowStringCharacters->False],
+    StandardForm], 
+   FormBox[
+    StyleBox["\<\"\[ScriptCapitalS]\"\>",
+     Editable->False,
+     ShowStringCharacters->False],
+    StandardForm],
+   MultilineFunction->None],
+  {StateSpaceModel, {}}]], "Output",
+ CellChangeTimes->{3.6194349037438*^9, 3.6194370147645435`*^9, 
+  3.6194376685319366`*^9, 3.6194428672069693`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Modelo discreto do sistema", "Section",
+ CellChangeTimes->{{3.619435064320985*^9, 3.619435067289154*^9}, {
+  3.619438199675317*^9, 3.619438202657487*^9}, {3.6194433031909065`*^9, 
+  3.6194433033979177`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SSd", " ", "=", " ", 
+  RowBox[{"ToDiscreteTimeModel", "[", 
+   RowBox[{"SS", ",", "0.02", ",", 
+    RowBox[{"Method", "\[Rule]", "\"\<ForwardRectangularRule\>\""}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6194345452232943`*^9, 3.6194346020665455`*^9}, {
+  3.6194347748274264`*^9, 3.6194347772345643`*^9}, {3.619434876556245*^9, 
+  3.6194349064099526`*^9}, {3.6194349761069393`*^9, 3.619434981450245*^9}, {
+  3.6194350846911497`*^9, 3.619435159378422*^9}, {3.6194352493065653`*^9, 
+  3.619435250626641*^9}, {3.6194353443069987`*^9, 3.61943535551464*^9}, {
+  3.619435530339639*^9, 3.61943555447602*^9}, {3.6194357701883583`*^9, 
+  3.6194357714904327`*^9}, {3.619435855140217*^9, 3.619435858664418*^9}, {
+  3.619436104474478*^9, 3.61943611325098*^9}, {3.619436504931383*^9, 
+  3.619436516539047*^9}, {3.61943704092304*^9, 3.6194370416750827`*^9}, {
+  3.619437673539223*^9, 3.6194376757943525`*^9}, {3.6194428772035413`*^9, 
+  3.6194428977447157`*^9}, {3.619442998201462*^9, 3.6194430438090706`*^9}, {
+  3.6194431632899046`*^9, 3.619443247696732*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  SubsuperscriptBox[
+   FormBox[
+    TagBox[
+     RowBox[{"(", "\[NoBreak]", GridBox[{
+        {"0.996`", "0.`", "0.2`"},
+        {"0.02`", "1.`", "0.`"},
+        {"0", "1", "0"}
+       },
+       AllowScriptLevelChange->False,
+       BaseStyle->{Deployed -> False},
+       GridBoxAlignment->{
+        "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+         "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+       GridBoxDividers->{
+        "Columns" -> {False, False, True, {False}, False}, 
+         "Rows" -> {False, False, True, {False}, False}},
+       GridBoxItemStyle->{
+        "ItemsIndexed" -> {{{1, 1}, {}} -> {
+            Deployed -> True, ShowStringCharacters -> False}, {{}, {1, 
+             1}} -> {Deployed -> True, ShowStringCharacters -> False}}},
+       GridBoxSpacings->{"Columns" -> {
+           Offset[0.27999999999999997`], {
+            Offset[0.7]}, 
+           Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+           Offset[0.2], {
+            Offset[0.4]}, 
+           Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+     Function[BoxForm`e$, 
+      MatrixForm[BoxForm`e$]]],
+    StandardForm], 
+   FormBox["0.02`",
+    StandardForm], 
+   FormBox[
+    StyleBox["\<\"\[ScriptCapitalS]\"\>",
+     Editable->False,
+     ShowStringCharacters->False],
+    StandardForm],
+   MultilineFunction->None],
+  {StateSpaceModel, {SamplingPeriod -> 0.02}}]], "Output",
+ CellChangeTimes->{
+  3.619436113533996*^9, {3.6194365057174277`*^9, 3.6194365167910614`*^9}, {
+   3.6194370295153875`*^9, 3.619437043747201*^9}, 3.619437676379386*^9, {
+   3.6194428694991007`*^9, 3.6194428987607737`*^9}, {3.6194429993285265`*^9, 
+   3.6194430441050873`*^9}, 3.619443079610118*^9, {3.619443165185013*^9, 
+   3.6194432481777596`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Ganhos do observador", "Section",
+ CellChangeTimes->{{3.6194353682013655`*^9, 3.619435375816801*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EstimatorGains", "[", 
+  RowBox[{"SSd", ",", 
+   RowBox[{"{", 
+    RowBox[{"0.5", ",", "0.6"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6194354429786425`*^9, 3.6194354558983817`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "9.820799999999998`", "}"}], ",", 
+   RowBox[{"{", "0.8960000000000002`", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6194354570884495`*^9, {3.6194355353369255`*^9, 3.6194355576041985`*^9}, 
+   3.6194358411204147`*^9, 3.61943611675218*^9, 3.6194366622483807`*^9, 
+   3.6194376790875406`*^9, {3.6194428727352858`*^9, 3.6194429025089884`*^9}, 
+   3.619443033997509*^9, {3.6194430806461773`*^9, 3.619443082277271*^9}, {
+   3.619443166838107*^9, 3.6194432506218996`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{784, 822},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
+Magnification->1.100000023841858,
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 119, 1, 77, "Section"],
+Cell[701, 25, 534, 13, 32, "Input"],
+Cell[1238, 40, 387, 9, 32, "Input"],
+Cell[1628, 51, 359, 8, 32, "Input"],
+Cell[1990, 61, 331, 7, 32, "Input"],
+Cell[CellGroupData[{
+Cell[2346, 72, 231, 5, 32, "Input"],
+Cell[2580, 79, 1609, 45, 60, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4238, 130, 213, 3, 77, "Section"],
+Cell[CellGroupData[{
+Cell[4476, 137, 1079, 17, 32, "Input"],
+Cell[5558, 156, 1787, 46, 60, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7394, 208, 107, 1, 77, "Section"],
+Cell[CellGroupData[{
+Cell[7526, 213, 215, 5, 32, "Input"],
+Cell[7744, 220, 530, 10, 32, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

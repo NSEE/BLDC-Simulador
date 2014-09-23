@@ -1,0 +1,229 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7082,        220]
+NotebookOptionsPosition[      6220,        183]
+NotebookOutlinePosition[      6566,        198]
+CellTagsIndexPosition[      6523,        195]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["Ganhos calculados no MATLAB", "Item"]], "Subtitle",
+ CellChangeTimes->{{3.619251642383876*^9, 3.6192516519504232`*^9}, 
+   3.619251711847849*^9, {3.6192517900713234`*^9, 3.6192517911423845`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Kp", " ", "=", " ", "0.000518154594293452"}]], "Input",
+ CellChangeTimes->{{3.6192516564806824`*^9, 3.619251689959597*^9}}],
+
+Cell[BoxData["0.000518154594293452`"], "Output",
+ CellChangeTimes->{{3.619251662857047*^9, 3.619251690805646*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Ki", " ", "=", " ", "0.0431725782178291"}]], "Input",
+ CellChangeTimes->{{3.619251668802387*^9, 3.6192516863113885`*^9}}],
+
+Cell[BoxData["0.0431725782178291`"], "Output",
+ CellChangeTimes->{{3.6192516734396524`*^9, 3.6192516873334475`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Controlador cont\[IAcute]nuo", "Subtitle",
+ CellChangeTimes->{{3.6192517754464865`*^9, 3.6192517850150337`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ControladorContinuo", " ", "=", " ", 
+  RowBox[{"TransferFunctionModel", "[", 
+   RowBox[{
+    RowBox[{"Kp", "+", 
+     RowBox[{"Ki", "/", "s"}]}], ",", "s"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6192515815583973`*^9, 3.6192515942401223`*^9}, {
+  3.619251695567918*^9, 3.619251699528145*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  SubsuperscriptBox[
+   FormBox[
+    TagBox[
+     RowBox[{"(", "\[NoBreak]", GridBox[{
+        {
+         FractionBox[
+          RowBox[{"0.0431725782178291`", "\[VeryThinSpace]", "+", 
+           RowBox[{"0.000518154594293452`", " ", "s"}]}], "s"]}
+       },
+       AllowScriptLevelChange->False,
+       BaseStyle->{Deployed -> False},
+       GridBoxAlignment->{
+        "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+         "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+       GridBoxItemStyle->{
+        "ItemsIndexed" -> {{{1, 1}, {}} -> {
+            Deployed -> True, ShowStringCharacters -> False}, {{}, {1, 
+             1}} -> {Deployed -> True, ShowStringCharacters -> False}}},
+       GridBoxSpacings->{"Columns" -> {
+           Offset[0.27999999999999997`], {
+            Offset[0.7]}, 
+           Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+           Offset[0.2], {
+            Offset[0.4]}, 
+           Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+     Function[BoxForm`e$, 
+      MatrixForm[BoxForm`e$]]],
+    StandardForm], 
+   FormBox[
+    StyleBox["\<\"\[InvisibleSpace]\"\>",
+     ShowStringCharacters->False],
+    StandardForm], 
+   FormBox[
+    StyleBox["\<\"\[ScriptCapitalT]\"\>",
+     Editable->False,
+     ShowStringCharacters->False],
+    StandardForm],
+   MultilineFunction->None],
+  {TransferFunctionModel, {{
+    Control`CommonDump`pVar -> $CellContext`s, Hash -> 
+     1466612759}}}]], "Output",
+ CellChangeTimes->{{3.619251585681633*^9, 3.6192515951111727`*^9}, 
+   3.6192517004721985`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Controlador discreto", "Subtitle",
+ CellChangeTimes->{{3.6192518225901833`*^9, 3.6192518248943152`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ControladorDiscreto", " ", "=", " ", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"ToDiscreteTimeModel", "[", 
+    RowBox[{"ControladorContinuo", ",", "Ts", ",", "z", ",", " ", 
+     RowBox[{"Method", "\[Rule]", "\"\<ZeroOrderHold\>\""}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6192496256205263`*^9, 3.619249715529669*^9}, {
+  3.619251431648823*^9, 3.6192514463286624`*^9}, {3.6192516004644785`*^9, 
+  3.6192516075518837`*^9}, {3.6192544792641363`*^9, 3.6192544849204597`*^9}, {
+  3.6192553417284665`*^9, 3.6192553463767323`*^9}, {3.619256975608919*^9, 
+  3.619256983056345*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  SubsuperscriptBox[
+   FormBox[
+    TagBox[
+     RowBox[{"(", "\[NoBreak]", GridBox[{
+        {
+         FractionBox[
+          RowBox[{"0.0005181545942934962`", "\[VeryThinSpace]", "-", 
+           RowBox[{"0.0431725782178291`", " ", "Ts"}], "-", 
+           RowBox[{"0.0005181545942934962`", " ", "z"}]}], 
+          RowBox[{"1.`", "\[VeryThinSpace]", "-", 
+           RowBox[{"1.`", " ", "z"}]}]]}
+       },
+       AllowScriptLevelChange->False,
+       BaseStyle->{Deployed -> False},
+       GridBoxAlignment->{
+        "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+         "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+       GridBoxItemStyle->{
+        "ItemsIndexed" -> {{{1, 1}, {}} -> {
+            Deployed -> True, ShowStringCharacters -> False}, {{}, {1, 
+             1}} -> {Deployed -> True, ShowStringCharacters -> False}}},
+       GridBoxSpacings->{"Columns" -> {
+           Offset[0.27999999999999997`], {
+            Offset[0.7]}, 
+           Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+           Offset[0.2], {
+            Offset[0.4]}, 
+           Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+     Function[BoxForm`e$, 
+      MatrixForm[BoxForm`e$]]],
+    StandardForm], 
+   FormBox["Ts",
+    StandardForm], 
+   FormBox[
+    StyleBox["\<\"\[ScriptCapitalT]\"\>",
+     Editable->False,
+     ShowStringCharacters->False],
+    StandardForm],
+   MultilineFunction->None],
+  {TransferFunctionModel, {
+   SamplingPeriod -> $CellContext`Ts, SystemsModelLabels -> None, {
+    Control`CommonDump`pVar -> $CellContext`z, Hash -> 
+     1797611560}}}]], "Output",
+ CellChangeTimes->{{3.619249661286566*^9, 3.619249716236709*^9}, 
+   3.6192514470927057`*^9, 3.619251608634946*^9, 3.6192517020642896`*^9, {
+   3.619254486375543*^9, 3.6192545051456165`*^9}, {3.61925533585013*^9, 
+   3.619255346871761*^9}, 3.6192569836733804`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{228, Automatic}, {Automatic, 53}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 219, 2, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[823, 28, 147, 2, 31, "Input"],
+Cell[973, 32, 114, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1124, 38, 145, 2, 31, "Input"],
+Cell[1272, 42, 116, 1, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1437, 49, 118, 1, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[1580, 54, 321, 7, 31, "Input"],
+Cell[1904, 63, 1586, 44, 48, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3539, 113, 110, 1, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[3674, 118, 613, 11, 52, "Input"],
+Cell[4290, 131, 1902, 48, 48, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
