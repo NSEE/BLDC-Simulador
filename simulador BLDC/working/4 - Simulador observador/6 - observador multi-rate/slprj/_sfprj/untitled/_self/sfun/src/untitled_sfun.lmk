@@ -1,0 +1,48 @@
+CC     = "C:\Program Files\MATLAB\R2012b\sys\lcc\bin\lcc.exe"
+LD     = "C:\Program Files\MATLAB\R2012b\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "C:\Program Files\MATLAB\R2012b\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"C:\Program Files\MATLAB\R2012b\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"untitled_sfun.obj"\
+	"untitled_sfun_registry.obj"\
+	"c1_untitled.obj"\
+	"c2_untitled.obj"\
+	"c3_untitled.obj"\
+	"c4_untitled.obj"\
+	"c5_untitled.obj"\
+	"lccstub.obj"\
+	"C:\Program Files\MATLAB\R2012b\sys\lcc\mex\lccdef.def"\
+	"C:\Program Files\MATLAB\R2012b\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"C:\Program Files\MATLAB\R2012b\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"C:\Program Files\MATLAB\R2012b\extern\lib\win32\lcc\libmex.lib"\
+	"C:\Program Files\MATLAB\R2012b\extern\lib\win32\lcc\libmx.lib"\
+	"C:\Program Files\MATLAB\R2012b\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"C:\Program Files\MATLAB\R2012b\extern\lib\win32\lcc\libut.lib"\
+	"C:\Program Files\MATLAB\R2012b\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"C:\Program Files\MATLAB\R2012b\extern\lib\win32\lcc\libemlrt.lib"\
+	"C:\Program Files\MATLAB\R2012b\extern\lib\win32\lcc\libmwblascompat32.lib"\
+
+INCLUDE_PATH= -I"C:\Program Files\MATLAB\R2012b\sys\lcc\include"  -I"C:\Program Files\MATLAB\R2012b\extern\include"  -I"C:\Program Files\MATLAB\R2012b\simulink\include"  -I"C:\Program Files\MATLAB\R2012b\stateflow\c\mex\include"  -I"C:\Program Files\MATLAB\R2012b\stateflow\c\debugger\include" 
+ 
+
+untitled_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o untitled_sfun.mexw32 @untitled_sfun.lmko
+untitled_sfun.obj :	"untitled_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "untitled_sfun.c"
+untitled_sfun_registry.obj :	"untitled_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "untitled_sfun_registry.c"
+c1_untitled.obj :	"c1_untitled.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_untitled.c"
+c2_untitled.obj :	"c2_untitled.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_untitled.c"
+c3_untitled.obj :	"c3_untitled.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_untitled.c"
+c4_untitled.obj :	"c4_untitled.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c4_untitled.c"
+c5_untitled.obj :	"c5_untitled.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c5_untitled.c"
+lccstub.obj :	"C:\Program Files\MATLAB\R2012b\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2012b\sys\lcc\mex\lccstub.c"
