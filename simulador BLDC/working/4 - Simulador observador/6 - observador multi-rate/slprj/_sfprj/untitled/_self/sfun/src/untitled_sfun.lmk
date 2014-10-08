@@ -8,11 +8,7 @@ LIBFLAGS =
 OBJECTS = \
 	"untitled_sfun.obj"\
 	"untitled_sfun_registry.obj"\
-	"c6_untitled.obj"\
-	"c7_untitled.obj"\
-	"c8_untitled.obj"\
-	"c9_untitled.obj"\
-	"c10_untitled.obj"\
+	"c11_untitled.obj"\
 	"lccstub.obj"\
 	"C:\Program Files\MATLAB\R2012b\sys\lcc\mex\lccdef.def"\
 	"C:\Program Files\MATLAB\R2012b\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
@@ -34,15 +30,7 @@ untitled_sfun.obj :	"untitled_sfun.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "untitled_sfun.c"
 untitled_sfun_registry.obj :	"untitled_sfun_registry.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "untitled_sfun_registry.c"
-c6_untitled.obj :	"c6_untitled.c"
-	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c6_untitled.c"
-c7_untitled.obj :	"c7_untitled.c"
-	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c7_untitled.c"
-c8_untitled.obj :	"c8_untitled.c"
-	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c8_untitled.c"
-c9_untitled.obj :	"c9_untitled.c"
-	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c9_untitled.c"
-c10_untitled.obj :	"c10_untitled.c"
-	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c10_untitled.c"
+c11_untitled.obj :	"c11_untitled.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c11_untitled.c"
 lccstub.obj :	"C:\Program Files\MATLAB\R2012b\sys\lcc\mex\lccstub.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2012b\sys\lcc\mex\lccstub.c"

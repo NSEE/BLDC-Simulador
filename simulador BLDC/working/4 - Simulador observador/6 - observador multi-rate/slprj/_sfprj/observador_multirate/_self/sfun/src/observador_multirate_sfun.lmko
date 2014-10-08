@@ -10,6 +10,7 @@
 "c8_observador_multirate.obj"
 "c9_observador_multirate.obj"
 "c10_observador_multirate.obj"
+"c11_observador_multirate.obj"
 "lccstub.obj"
 "C:\Program Files\MATLAB\R2012b\sys\lcc\mex\lccdef.def"
 "C:\Program Files\MATLAB\R2012b\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"

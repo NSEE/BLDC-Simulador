@@ -11,6 +11,7 @@
 #include "c8_observador_multirate.h"
 #include "c9_observador_multirate.h"
 #include "c10_observador_multirate.h"
+#include "c11_observador_multirate.h"
 
 /* Type Definitions */
 
@@ -87,6 +88,11 @@ unsigned int sf_observador_multirate_method_dispatcher(SimStruct *simstructPtr,
     return 1;
   }
 
+  if (chartFileNumber==11) {
+    c11_observador_multirate_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
   return 0;
 }
 
@@ -120,10 +126,10 @@ unsigned int sf_observador_multirate_process_check_sum_call( int nlhs, mxArray *
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(791869345U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(4263451432U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(473647982U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2922378118U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3165492202U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3538989286U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(584209401U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1260530317U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
@@ -198,6 +204,13 @@ unsigned int sf_observador_multirate_process_check_sum_call( int nlhs, mxArray *
           break;
         }
 
+       case 11:
+        {
+          extern void sf_c11_observador_multirate_get_check_sum(mxArray *plhs[]);
+          sf_c11_observador_multirate_get_check_sum(plhs);
+          break;
+        }
+
        default:
         ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(0.0);
         ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(0.0);
@@ -213,10 +226,10 @@ unsigned int sf_observador_multirate_process_check_sum_call( int nlhs, mxArray *
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3809206343U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(164408188U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2857541231U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1614886115U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2291230253U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1166624868U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(451922398U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(878389U);
   }
 
   return 1;
@@ -382,6 +395,19 @@ unsigned int sf_observador_multirate_autoinheritance_info( int nlhs, mxArray *
         break;
       }
 
+     case 11:
+      {
+        if (strcmp(aiChksum, "njcXX45HdRI2ZHAEI9U5GB") == 0) {
+          extern mxArray *sf_c11_observador_multirate_get_autoinheritance_info
+            (void);
+          plhs[0] = sf_c11_observador_multirate_get_autoinheritance_info();
+          break;
+        }
+
+        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
+        break;
+      }
+
      default:
       plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
     }
@@ -527,6 +553,17 @@ unsigned int sf_observador_multirate_get_eml_resolved_functions_info( int nlhs,
         break;
       }
 
+     case 11:
+      {
+        extern const mxArray
+          *sf_c11_observador_multirate_get_eml_resolved_functions_info(void);
+        mxArray *persistentMxArray = (mxArray *)
+          sf_c11_observador_multirate_get_eml_resolved_functions_info();
+        plhs[0] = mxDuplicateArray(persistentMxArray);
+        mxDestroyArray(persistentMxArray);
+        break;
+      }
+
      default:
       plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
     }
@@ -545,7 +582,7 @@ unsigned int sf_observador_multirate_get_eml_resolved_functions_info( int nlhs,
 void observador_multirate_debug_initialize(void)
 {
   _observador_multirateMachineNumber_ = sf_debug_initialize_machine(
-    "observador_multirate","sfun",0,10,0,0,0);
+    "observador_multirate","sfun",0,11,0,0,0);
   sf_debug_set_machine_event_thresholds(_observador_multirateMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_observador_multirateMachineNumber_,0);
 }

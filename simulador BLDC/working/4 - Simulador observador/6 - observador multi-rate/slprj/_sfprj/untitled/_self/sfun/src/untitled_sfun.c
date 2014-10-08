@@ -1,11 +1,7 @@
 /* Include files */
 
 #include "untitled_sfun.h"
-#include "c6_untitled.h"
-#include "c7_untitled.h"
-#include "c8_untitled.h"
-#include "c9_untitled.h"
-#include "c10_untitled.h"
+#include "c11_untitled.h"
 
 /* Type Definitions */
 
@@ -32,28 +28,8 @@ void untitled_terminator(void)
 unsigned int sf_untitled_method_dispatcher(SimStruct *simstructPtr, unsigned int
   chartFileNumber, const char* specsCksum, int_T method, void *data)
 {
-  if (chartFileNumber==6) {
-    c6_untitled_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
-  if (chartFileNumber==7) {
-    c7_untitled_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
-  if (chartFileNumber==8) {
-    c8_untitled_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
-  if (chartFileNumber==9) {
-    c9_untitled_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
-  if (chartFileNumber==10) {
-    c10_untitled_method_dispatcher(simstructPtr, method, data);
+  if (chartFileNumber==11) {
+    c11_untitled_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
@@ -90,46 +66,18 @@ unsigned int sf_untitled_process_check_sum_call( int nlhs, mxArray * plhs[], int
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1939713237U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2369807547U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(366143684U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(197821412U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(718659882U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(654186732U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(4071045474U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(46686637U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
       switch (chartFileNumber) {
-       case 6:
+       case 11:
         {
-          extern void sf_c6_untitled_get_check_sum(mxArray *plhs[]);
-          sf_c6_untitled_get_check_sum(plhs);
-          break;
-        }
-
-       case 7:
-        {
-          extern void sf_c7_untitled_get_check_sum(mxArray *plhs[]);
-          sf_c7_untitled_get_check_sum(plhs);
-          break;
-        }
-
-       case 8:
-        {
-          extern void sf_c8_untitled_get_check_sum(mxArray *plhs[]);
-          sf_c8_untitled_get_check_sum(plhs);
-          break;
-        }
-
-       case 9:
-        {
-          extern void sf_c9_untitled_get_check_sum(mxArray *plhs[]);
-          sf_c9_untitled_get_check_sum(plhs);
-          break;
-        }
-
-       case 10:
-        {
-          extern void sf_c10_untitled_get_check_sum(mxArray *plhs[]);
-          sf_c10_untitled_get_check_sum(plhs);
+          extern void sf_c11_untitled_get_check_sum(mxArray *plhs[]);
+          sf_c11_untitled_get_check_sum(plhs);
           break;
         }
 
@@ -148,10 +96,10 @@ unsigned int sf_untitled_process_check_sum_call( int nlhs, mxArray * plhs[], int
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(702053260U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(969452834U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1192589352U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(498483453U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(120861215U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2349642548U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1205960577U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3786149447U);
   }
 
   return 1;
@@ -187,59 +135,11 @@ unsigned int sf_untitled_autoinheritance_info( int nlhs, mxArray * plhs[], int
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
-     case 6:
+     case 11:
       {
-        if (strcmp(aiChksum, "raU7cJpaX09H9yQhpSZl0G") == 0) {
-          extern mxArray *sf_c6_untitled_get_autoinheritance_info(void);
-          plhs[0] = sf_c6_untitled_get_autoinheritance_info();
-          break;
-        }
-
-        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
-        break;
-      }
-
-     case 7:
-      {
-        if (strcmp(aiChksum, "L0xKuJhGP3PV5ReepyhHlB") == 0) {
-          extern mxArray *sf_c7_untitled_get_autoinheritance_info(void);
-          plhs[0] = sf_c7_untitled_get_autoinheritance_info();
-          break;
-        }
-
-        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
-        break;
-      }
-
-     case 8:
-      {
-        if (strcmp(aiChksum, "7zS6oOqXdNXJumDxap45vH") == 0) {
-          extern mxArray *sf_c8_untitled_get_autoinheritance_info(void);
-          plhs[0] = sf_c8_untitled_get_autoinheritance_info();
-          break;
-        }
-
-        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
-        break;
-      }
-
-     case 9:
-      {
-        if (strcmp(aiChksum, "ekMZSH4pEDqbM6p5hRtYdC") == 0) {
-          extern mxArray *sf_c9_untitled_get_autoinheritance_info(void);
-          plhs[0] = sf_c9_untitled_get_autoinheritance_info();
-          break;
-        }
-
-        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
-        break;
-      }
-
-     case 10:
-      {
-        if (strcmp(aiChksum, "XnLWyjfSjCYHq57UVPKYI") == 0) {
-          extern mxArray *sf_c10_untitled_get_autoinheritance_info(void);
-          plhs[0] = sf_c10_untitled_get_autoinheritance_info();
+        if (strcmp(aiChksum, "ll1bIkCQoiZotX2BJs6y6C") == 0) {
+          extern mxArray *sf_c11_untitled_get_autoinheritance_info(void);
+          plhs[0] = sf_c11_untitled_get_autoinheritance_info();
           break;
         }
 
@@ -282,56 +182,12 @@ unsigned int sf_untitled_get_eml_resolved_functions_info( int nlhs, mxArray *
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
-     case 6:
+     case 11:
       {
-        extern const mxArray *sf_c6_untitled_get_eml_resolved_functions_info
+        extern const mxArray *sf_c11_untitled_get_eml_resolved_functions_info
           (void);
         mxArray *persistentMxArray = (mxArray *)
-          sf_c6_untitled_get_eml_resolved_functions_info();
-        plhs[0] = mxDuplicateArray(persistentMxArray);
-        mxDestroyArray(persistentMxArray);
-        break;
-      }
-
-     case 7:
-      {
-        extern const mxArray *sf_c7_untitled_get_eml_resolved_functions_info
-          (void);
-        mxArray *persistentMxArray = (mxArray *)
-          sf_c7_untitled_get_eml_resolved_functions_info();
-        plhs[0] = mxDuplicateArray(persistentMxArray);
-        mxDestroyArray(persistentMxArray);
-        break;
-      }
-
-     case 8:
-      {
-        extern const mxArray *sf_c8_untitled_get_eml_resolved_functions_info
-          (void);
-        mxArray *persistentMxArray = (mxArray *)
-          sf_c8_untitled_get_eml_resolved_functions_info();
-        plhs[0] = mxDuplicateArray(persistentMxArray);
-        mxDestroyArray(persistentMxArray);
-        break;
-      }
-
-     case 9:
-      {
-        extern const mxArray *sf_c9_untitled_get_eml_resolved_functions_info
-          (void);
-        mxArray *persistentMxArray = (mxArray *)
-          sf_c9_untitled_get_eml_resolved_functions_info();
-        plhs[0] = mxDuplicateArray(persistentMxArray);
-        mxDestroyArray(persistentMxArray);
-        break;
-      }
-
-     case 10:
-      {
-        extern const mxArray *sf_c10_untitled_get_eml_resolved_functions_info
-          (void);
-        mxArray *persistentMxArray = (mxArray *)
-          sf_c10_untitled_get_eml_resolved_functions_info();
+          sf_c11_untitled_get_eml_resolved_functions_info();
         plhs[0] = mxDuplicateArray(persistentMxArray);
         mxDestroyArray(persistentMxArray);
         break;
@@ -354,7 +210,7 @@ unsigned int sf_untitled_get_eml_resolved_functions_info( int nlhs, mxArray *
 
 void untitled_debug_initialize(void)
 {
-  _untitledMachineNumber_ = sf_debug_initialize_machine("untitled","sfun",0,5,0,
+  _untitledMachineNumber_ = sf_debug_initialize_machine("untitled","sfun",0,1,0,
     0,0);
   sf_debug_set_machine_event_thresholds(_untitledMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_untitledMachineNumber_,0);

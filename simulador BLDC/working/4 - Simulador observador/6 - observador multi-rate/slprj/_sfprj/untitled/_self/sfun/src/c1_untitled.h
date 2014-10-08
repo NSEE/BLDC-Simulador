@@ -35,6 +35,14 @@ typedef struct {
   boolean_T c1_isStable;
   boolean_T c1_doneDoubleBufferReInit;
   uint8_T c1_is_active_c1_untitled;
+  real_T c1_x[2];
+  boolean_T c1_x_not_empty;
+  real_T c1_t;
+  boolean_T c1_t_not_empty;
+  real_T c1_C[2];
+  boolean_T c1_C_not_empty;
+  real_T c1_D;
+  boolean_T c1_D_not_empty;
 } SFc1_untitledInstanceStruct;
 
 #endif                                 /*typedef_SFc1_untitledInstanceStruct*/
