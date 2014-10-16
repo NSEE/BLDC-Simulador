@@ -1,0 +1,41 @@
+Sistema de interesse:
+
+- imagem mostrando o BLDC, o eixo dele, o ângulo theta, a carga e todos os torques (acho que tem no
+pdf do aluno de IC) (tem, mas não é muito bom)
+
+- hipóteses
+
+- explica o que é cada uma das coisas no desenho
+	
+	- torque elétrico
+	- torque de atrito viscoso
+	- torque da carga
+
+- imagem mostrando o bloco do BLDC
+
+- explica entradas e saídas
+
+	- entradas
+		- tensões por fase
+		- torque de carga
+
+	- saídas
+		- theta_m
+		- w_m
+		- internal
+			- FCEMs [3x1]
+			- Correntes [3x1]
+			- Torques [3x1]
+			- Torque total [1x1]
+
+- explica os parâmetros do motor (talvez uma tabela?)
+
+	- inércia do rotor
+	- resistência por fase
+	- indutância por fase
+	- número de pólos
+	- constante de torque
+	- constante de força eletromotriz
+	- constante de atrito viscoso
+
+- mostra o bloco que implementa a comutação em blocos

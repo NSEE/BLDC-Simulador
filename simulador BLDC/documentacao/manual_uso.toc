@@ -1,0 +1,9 @@
+\select@language {brazilian}
+\contentsline {chapter}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{4}{chapter.1}
+\contentsline {section}{\numberline {1.1}Objetivo}{4}{section.1.1}
+\contentsline {section}{\numberline {1.2}Sistema de interesse}{4}{section.1.2}
+\contentsline {section}{\numberline {1.3}Hip\IeC {\'o}teses}{5}{section.1.3}
+\contentsline {section}{\numberline {1.4}Modelo matem\IeC {\'a}tico}{5}{section.1.4}
+\contentsline {chapter}{\numberline {2}Implementa\IeC {\c c}\IeC {\~a}o}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Bloco BLDC}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Bloco BLDC com l\IeC {\'o}gica de comuta\IeC {\c c}\IeC {\~a}o em blocos}{8}{section.2.2}
