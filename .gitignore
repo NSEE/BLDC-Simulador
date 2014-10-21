@@ -2,3 +2,4 @@
 slprj/
 *.mexw32
 *.mexw64
+*.log
