@@ -54,7 +54,8 @@ title=TBD.~\thetcbcounter: #2,#1}
 % ------------------------------------------------------------------------
 %%---------- Revisão
 \begin{versionhistory}
-  \vhEntry{0.0.1}{14.10.14}{Juliano Laganá}{Criação do documento}
+  \vhEntry{0.0.1}{16.10.14}{Juliano Laganá}{Criação do documento}
+  \vhEntry{0.0.2}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados}
 \end{versionhistory}
 
 
@@ -205,7 +206,7 @@ title=TBD.~\thetcbcounter: #2,#1}
             \end{enumerate}
         \end{itemize}
 
-\chapter{Ferramentas para medição de posição e velocidade}
+\chapter{Ferramentas adicionais}
 
     \section{Medição de posição}
         Para medição de posição angular do rotor foi desenvolvido um bloco que simula o funcionamento de um encoder de quadratura, ilustrado na figura \ref{fig:bloco_encoder}. O número de pulsos por revolução pode ser configurado clicando-se duas vezes no bloco.
@@ -241,7 +242,7 @@ title=TBD.~\thetcbcounter: #2,#1}
         \end{figure}
 
         \begin{itemize}
-        
+
             \item Entradas
                 \begin{enumerate}
                     \item Posicao - Essa entrada deve ser conectada à saída ``Theta\_amostrado'' do bloco simulador de encoder de quadratura. [graus]

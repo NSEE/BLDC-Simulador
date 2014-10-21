@@ -54,7 +54,8 @@ title=TBD.~\thetcbcounter: #2,#1}
 % ------------------------------------------------------------------------
 %%---------- Revisão
 \begin{versionhistory}
-  \vhEntry{0.0.1}{14.10.14}{Juliano Laganá}{Criação do documento}
+  \vhEntry{0.0.1}{16.10.14}{Juliano Laganá}{Criação do documento}
+  \vhEntry{0.0.2}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados}
 \end{versionhistory}
 
 
@@ -208,7 +209,7 @@ title=TBD.~\thetcbcounter: #2,#1}
 \chapter{Ferramentas para medição de posição e velocidade}
 
     \section{Medição de posição}
-        Para medição de posição angular do rotor foi desenvolvido um bloco que simula o funcionamento de um encoder de quadratura, ilustrado na figura \ref{fig:bloco_encoder}. O número de pulsos por revolução pode ser configurado clicando-se duas vezes no bloco. ATENÇÃO: ESSE BLOCO DEVE SEER UTILIZAOADKAOK...
+        Para medição de posição angular do rotor foi desenvolvido um bloco que simula o funcionamento de um encoder de quadratura, ilustrado na figura \ref{fig:bloco_encoder}. O número de pulsos por revolução pode ser configurado clicando-se duas vezes no bloco.
         \begin{figure}[ht]
             \centering
             \includegraphics[width=0.3\textwidth]{bloco_encoder}
@@ -225,10 +226,14 @@ title=TBD.~\thetcbcounter: #2,#1}
                 \begin{enumerate}
                     \item Theta\_amostrado - Ângulo mecânico entre o rotor e o estator, amostrado pelo encoder de quadratura simulado. [graus]
                 \end{enumerate}
+            \item Restrições
+                \begin{enumerate}
+                    \item Para o correto funcionamento desse bloco, o step size da simulação deve ser configurado para nunca exceder $\frac{360}{4.N_r.V_{máx}}$ segundos; onde $N_r$ é o número de pulsos por rotação do encoder (especificado clicando-se duas vezes em cima do bloco) e $V_{máx}$ é o valor máximo da derivada da entrada Theta em graus/s. Exemplo: Para a correta simulação de um encoder com $N_r=300$, amostrando um BLDC cuja velocidade angular atinge no máximo $1200$ graus/s (portanto o valor máximo da derivada da entrada Theta também é $1200$ graus/s), faz-se necessário configurar a simulação para que o step size nunca exceda $2,5 . 10^{-4}$ segundos.
+                \end{enumerate}
         \end{itemize}
 
     \section{Medição de velocidade}
-        O algoritmo M/T para estimação de velocidade \cite{choishoen1985} foi implementado no simulink e está ilustrado na figura \ref{fig:bloco_MT}
+        O algoritmo M/T para estimação de velocidade \cite{algoritmoMT} foi implementado no simulink e está ilustrado na figura \ref{fig:bloco_MT}
         \begin{figure}[ht]
             \centering
             \includegraphics[width=0.3\textwidth]{bloco_MT}
@@ -237,7 +242,7 @@ title=TBD.~\thetcbcounter: #2,#1}
         \end{figure}
 
         \begin{itemize}
-        
+
             \item Entradas
                 \begin{enumerate}
                     \item Posicao - Essa entrada deve ser conectada à saída ``Theta\_amostrado'' do bloco simulador de encoder de quadratura. [graus]
@@ -247,6 +252,9 @@ title=TBD.~\thetcbcounter: #2,#1}
                     \item Velocidade - Velocidade estimada pelo algorimo M/T. [graus/s]
                 \end{enumerate}
         \end{itemize}
+
+
+
 
 \bibliographystyle{plain}
 \bibliography{bibfile}
