@@ -1,0 +1,6 @@
+subplot(3,1,1)
+plot(tout*360,e(:,1),'r'), grid, hold on, plot(tout*360, sin([tout*2*pi+pi/2-0/180*pi]))
+subplot(3,1,2)
+plot(tout*360,e(:,2),'r'), grid, hold on, plot(tout*360, sin([tout*2*pi+pi/2-120/180*pi]))
+subplot(3,1,3)
+plot(tout*360,e(:,3),'r'), grid, hold on, plot(tout*360, sin([tout*2*pi+pi/2-240/180*pi]))
