@@ -54,9 +54,9 @@ title=TBD.~\thetcbcounter: #2,#1}
 % ------------------------------------------------------------------------
 %%---------- Revisão
 \begin{versionhistory}
-  \vhEntry{0.0.1}{16.10.14}{Juliano Laganá}{Criação do documento}
-  \vhEntry{0.0.2}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados}
-  \vhEntry{0.0.3}{24.06.15}{Juliano Laganá}{Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas}
+  \vhEntry{1.0.0}{16.10.14}{Juliano Laganá}{Criação do documento}
+  \vhEntry{1.0.1}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados}
+  \vhEntry{1.0.2}{24.06.15}{Juliano Laganá}{Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas}
 \end{versionhistory}
 
 
@@ -95,9 +95,9 @@ title=TBD.~\thetcbcounter: #2,#1}
     \label{sec:modelo_matematico}
         \begin{itemize}
             \item Dinâmica mecânica: $$J.\frac{d^2\theta_m}{dt^2}=T_e-T_l-K_d.\frac{d\theta_m}{dt}$$
-            \item Dinâmica elétrica:                
+            \item Dinâmica elétrica:
                 $$v_{ab} = R(i_a-i_b)+L\frac{d}{dt}(i_a-i_b)+e_a-e_b$$
-                $$v_{bc} = R(i_a+2i_b)+L\frac{d}{dt}(i_a+2i_b)+e_b-e_c$$ 
+                $$v_{bc} = R(i_a+2i_b)+L\frac{d}{dt}(i_a+2i_b)+e_b-e_c$$
                 $$i_a+i_b+i_c=0$$
             \item Forças contraeletromotrizes geradas em cada fase:
                 $$e_a = \frac{f_a(\theta_e).K_e}{2}.\frac{d\theta_m}{dt} $$

@@ -3,15 +3,15 @@
  & \textbf {\vhdatename }
  & \textbf {\vhauthorname }
  & \textbf {\vhchangename }\\[1ex]
-0.0.1
+1.0.0
  & 16.10.14
  & \listset {Juliano Laganá}
  & Criação do documento\\
-0.0.2
+1.0.1
  & 21.10.14
  & \listset {Juliano Laganá}
  & Adição do encoder e do método M/T aos blocos especificados\\
-0.0.3
+1.0.2
  & 24.06.15
  & \listset {Juliano Laganá}
  & Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas\\
