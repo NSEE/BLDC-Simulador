@@ -6,17 +6,21 @@
 1.0.0
  & 16.10.14
  & \listset {Juliano Laganá}
- & Criação do documento\\
+ & Criação do documento.\\
 1.0.1
  & 21.10.14
  & \listset {Juliano Laganá}
- & Adição do encoder e do método M/T aos blocos especificados\\
+ & Adição do encoder e do método M/T aos blocos especificados.\\
 1.0.2
  & 24.06.15
  & \listset {Juliano Laganá}
- & Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas\\
+ & Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas.\\
 1.0.3
  & 24.06.15
  & \listset {Juliano Laganá}
- & Adição do bloco de conversão de tensões\\
+ & Adição do bloco de conversão de tensões.\\
+1.0.4
+ & 24.06.15
+ & \listset {Juliano Laganá}
+ & Correção da definição do parâmetro L. Na verdade é a indutância por fase descontada da indutância mútua.\\
 \end {longtable}

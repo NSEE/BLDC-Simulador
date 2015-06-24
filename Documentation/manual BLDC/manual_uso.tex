@@ -54,10 +54,11 @@ title=TBD.~\thetcbcounter: #2,#1}
 % ------------------------------------------------------------------------
 %%---------- Revisão
 \begin{versionhistory}
-  \vhEntry{1.0.0}{16.10.14}{Juliano Laganá}{Criação do documento}
-  \vhEntry{1.0.1}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados}
-  \vhEntry{1.0.2}{24.06.15}{Juliano Laganá}{Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas}
-  \vhEntry{1.0.3}{24.06.15}{Juliano Laganá}{Adição do bloco de conversão de tensões}
+  \vhEntry{1.0.0}{16.10.14}{Juliano Laganá}{Criação do documento.}
+  \vhEntry{1.0.1}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados.}
+  \vhEntry{1.0.2}{24.06.15}{Juliano Laganá}{Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas.}
+  \vhEntry{1.0.3}{24.06.15}{Juliano Laganá}{Adição do bloco de conversão de tensões.}
+  \vhEntry{1.0.4}{24.06.15}{Juliano Laganá}{Correção da definição do parâmetro L. Na verdade é a indutância por fase descontada da indutância mútua.}
 \end{versionhistory}
 
 
@@ -123,7 +124,7 @@ title=TBD.~\thetcbcounter: #2,#1}
             \item[$\theta_m$] = Ângulo do rotor em relação ao estator
             \item[$\theta_e$] = Ângulo elétrico
 
-            \item[$L$] = Indutância de cada fase
+            \item[$L$] = Indutância de cada fase (descontada do valor da indutância mútua, caso seja significativo)
             \item[$R$] = Resistência de cada fase
             \item[$v_{ab}$] = Tensão entre as fase $a$ e $b$
             \item[$v_{bc}$] = Tensão entre as fases $b$ e $c$
@@ -217,7 +218,7 @@ title=TBD.~\thetcbcounter: #2,#1}
             \caption{Bloco para converter as tensões individuais em tensões entre fases}
             \label{fig:bloco_conversao_tensoes}
         \end{figure}
-        
+
         \begin{itemize}
             \item Entradas
                 \begin{enumerate}
@@ -231,7 +232,7 @@ title=TBD.~\thetcbcounter: #2,#1}
                     \item $v_{bc}$ - Tensão entre as fases $b$ e $c$
                 \end{enumerate}
         \end{itemize}
-        
+
     \newpage
     \section{Medição de posição}
         Para medição de posição angular do rotor foi desenvolvido um bloco que simula o funcionamento de um encoder de quadratura, ilustrado na figura \ref{fig:bloco_encoder}. O número de pulsos por revolução pode ser configurado clicando-se duas vezes no bloco.
@@ -256,8 +257,8 @@ title=TBD.~\thetcbcounter: #2,#1}
                     \item Para o correto funcionamento desse bloco, o step size da simulação deve ser configurado para nunca exceder $\frac{360}{4.N_r.V_{máx}}$ segundos; onde $N_r$ é o número de pulsos por rotação do encoder (especificado clicando-se duas vezes em cima do bloco) e $V_{máx}$ é o valor máximo da derivada da entrada Theta em graus/s. Exemplo: Para a correta simulação de um encoder com $N_r=300$, amostrando um BLDC cuja velocidade angular atinge no máximo $1200$ graus/s (portanto o valor máximo da derivada da entrada Theta também é $1200$ graus/s), faz-se necessário configurar a simulação para que o step size nunca exceda $2,5 . 10^{-4}$ segundos.
                 \end{enumerate}
         \end{itemize}
-        
-        
+
+
     \newpage
     \section{Medição de velocidade}
         O algoritmo M/T para estimação de velocidade \cite{algoritmoMT} foi implementado no simulink e está ilustrado na figura \ref{fig:bloco_MT}
