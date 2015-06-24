@@ -11,4 +11,8 @@
  & 21.10.14
  & \listset {Juliano Laganá}
  & Adição do encoder e do método M/T aos blocos especificados\\
+0.0.3
+ & 24.06.15
+ & \listset {Juliano Laganá}
+ & Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas\\
 \end {longtable}

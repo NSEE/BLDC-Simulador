@@ -56,6 +56,7 @@ title=TBD.~\thetcbcounter: #2,#1}
 \begin{versionhistory}
   \vhEntry{0.0.1}{16.10.14}{Juliano Laganá}{Criação do documento}
   \vhEntry{0.0.2}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados}
+  \vhEntry{0.0.3}{24.06.15}{Juliano Laganá}{Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas}
 \end{versionhistory}
 
 
@@ -90,13 +91,14 @@ title=TBD.~\thetcbcounter: #2,#1}
         \end{itemize}
 
     \section{Modelo matemático}
+    O modelo matemático implementado é o proposto por \cite{baldursson}.
     \label{sec:modelo_matematico}
         \begin{itemize}
             \item Dinâmica mecânica: $$J.\frac{d^2\theta_m}{dt^2}=T_e-T_l-K_d.\frac{d\theta_m}{dt}$$
-            \item Dinâmica elétrica de cada fase:
-                $$V_a = L.\frac{di_a}{dt}+e_a+R.i_a$$
-                $$V_b = L.\frac{di_b}{dt}+e_b+R.i_b$$
-                $$V_c = L.\frac{di_c}{dt}+e_c+R.i_c$$
+            \item Dinâmica elétrica:                
+                $$v_{ab} = R(i_a-i_b)+L\frac{d}{dt}(i_a-i_b)+e_a-e_b$$
+                $$v_{bc} = R(i_a+2i_b)+L\frac{d}{dt}(i_a+2i_b)+e_b-e_c$$ 
+                $$i_a+i_b+i_c=0$$
             \item Forças contraeletromotrizes geradas em cada fase:
                 $$e_a = \frac{f_a(\theta_e).K_e}{2}.\frac{d\theta_m}{dt} $$
                 $$e_b = \frac{f_b(\theta_e).K_e}{2}.\frac{d\theta_m}{dt} $$
@@ -122,9 +124,8 @@ title=TBD.~\thetcbcounter: #2,#1}
 
             \item[$L$] = Indutância de cada fase
             \item[$R$] = Resistência de cada fase
-            \item[$V_a$] = Tensão na fase $a$
-            \item[$V_b$] = Tensão na fase $b$
-            \item[$V_c$] = Tensão na fase $c$
+            \item[$v_{ab}$] = Tensão entre as fase $a$ e $b$
+            \item[$v_{bc}$] = Tensão entre as fases $b$ e $c$
             \item[$i_a$] = Corrente na fase $a$
             \item[$i_b$] = Corrente na fase $b$
             \item[$i_c$] = Corrente na fase $c$
@@ -157,9 +158,8 @@ title=TBD.~\thetcbcounter: #2,#1}
         \begin{itemize}
             \item Entradas
             \begin{enumerate}
-                \item Va - Tensão na fase $a$ [V]
-                \item Vb - Tensão na fase $b$ [V]
-                \item Vc - Tensão na fase $c$ [V]
+                \item Vab - Tensão entre as fases $a$ e $b$ [V]
+                \item Vbc - Tensão entre as fases $b$ e $c$ [V]
                 \item Tl - Torque da carga [N.m]
             \end{enumerate}
             \item Saídas
