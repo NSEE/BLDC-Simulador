@@ -3,6 +3,7 @@
 
 # Ignores para Matlab
 *.asv
+*.original
 *.m~
 *.mex*
 slprj/
