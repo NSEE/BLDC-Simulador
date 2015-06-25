@@ -54,8 +54,11 @@ title=TBD.~\thetcbcounter: #2,#1}
 % ------------------------------------------------------------------------
 %%---------- Revisão
 \begin{versionhistory}
-  \vhEntry{0.0.1}{16.10.14}{Juliano Laganá}{Criação do documento}
-  \vhEntry{0.0.2}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados}
+  \vhEntry{1.0.0}{16.10.14}{Juliano Laganá}{Criação do documento.}
+  \vhEntry{1.0.1}{21.10.14}{Juliano Laganá}{Adição do encoder e do método M/T aos blocos especificados.}
+  \vhEntry{1.0.2}{24.06.15}{Juliano Laganá}{Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas.}
+  \vhEntry{1.0.3}{24.06.15}{Juliano Laganá}{Adição do bloco de conversão de tensões.}
+  \vhEntry{1.0.4}{24.06.15}{Juliano Laganá}{Correção da definição do parâmetro L. Na verdade é a indutância por fase descontada da indutância mútua.}
 \end{versionhistory}
 
 
@@ -69,7 +72,7 @@ title=TBD.~\thetcbcounter: #2,#1}
         O sistema de interesse é um motor DC sem escovas acoplado à uma carga constante. A figura \ref{fig_modelo_simplificado} ilustra um modelo simplificado do sistema. Os torques mostrados no desenho são:
         \begin{itemize}
             \item $T_e$ : Torque elétrico gerado pelo motor.
-            \item $T_d$ : Torque de atrito viscoso no mancal.
+            \item $T_d$ : Torque de atrito no mancal (atrito viscoso + atrito de Coulomb).
             \item $T_l$ : Torque da carga.
         \end{itemize}
 
@@ -85,21 +88,19 @@ title=TBD.~\thetcbcounter: #2,#1}
             \item Todas as fases de alimentação do BLDC tem a mesma resistência.
             \item Todas as fases de alimentação do BLDC tem a mesma indutância.
             \item Todos as partes do sistema são consideradas corpos rígidos.
-            \item O atrito no mancal é diretamente proporcional à velocidade angular do rotor em relação ao estator.
+            \item O atrito no mancal pode ser modelado como atrito viscoso (diretamente proporcional à velocidade angular do rotor em relação ao estator) + atrito de Coulomb.
             \item A força contraeletromotriz gerada em cada fase de alimentação tem o formato trapezoidal.
         \end{itemize}
 
     \section{Modelo matemático}
+    O modelo matemático elétrico implementado é o proposto por \cite{baldursson}.
     \label{sec:modelo_matematico}
         \begin{itemize}
             \item Dinâmica mecânica: $$J.\frac{d^2\theta_m}{dt^2}=T_e-T_l-K_d.\frac{d\theta_m}{dt}$$
-            \item Dinâmica elétrica de cada fase:
-                $$V_a = L.\frac{di_a}{dt}+e_a+R.i_a$$
-                $$V_b = L.\frac{di_b}{dt}+e_b+R.i_b$$
-                $$V_c = L.\frac{di_c}{dt}+e_c+R.i_c$$
-                
+            \item Dinâmica elétrica:
                 $$v_{ab} = R(i_a-i_b)+L\frac{d}{dt}(i_a-i_b)+e_a-e_b$$
-                $$v_{bc} = R(i_a+2i_b)+L\frac{d}{dt}(i_a+2i_b)+e_b-e_c$$ 
+                $$v_{bc} = R(i_a+2i_b)+L\frac{d}{dt}(i_a+2i_b)+e_b-e_c$$
+                $$i_a+i_b+i_c=0$$
             \item Forças contraeletromotrizes geradas em cada fase:
                 $$e_a = \frac{f_a(\theta_e).K_e}{2}.\frac{d\theta_m}{dt} $$
                 $$e_b = \frac{f_b(\theta_e).K_e}{2}.\frac{d\theta_m}{dt} $$
@@ -123,11 +124,10 @@ title=TBD.~\thetcbcounter: #2,#1}
             \item[$\theta_m$] = Ângulo do rotor em relação ao estator
             \item[$\theta_e$] = Ângulo elétrico
 
-            \item[$L$] = Indutância de cada fase
+            \item[$L$] = Indutância de cada fase (descontada do valor da indutância mútua, caso seja significativo)
             \item[$R$] = Resistência de cada fase
-            \item[$V_a$] = Tensão na fase $a$
-            \item[$V_b$] = Tensão na fase $b$
-            \item[$V_c$] = Tensão na fase $c$
+            \item[$v_{ab}$] = Tensão entre as fase $a$ e $b$
+            \item[$v_{bc}$] = Tensão entre as fases $b$ e $c$
             \item[$i_a$] = Corrente na fase $a$
             \item[$i_b$] = Corrente na fase $b$
             \item[$i_c$] = Corrente na fase $c$
@@ -160,9 +160,8 @@ title=TBD.~\thetcbcounter: #2,#1}
         \begin{itemize}
             \item Entradas
             \begin{enumerate}
-                \item Va - Tensão na fase $a$ [V]
-                \item Vb - Tensão na fase $b$ [V]
-                \item Vc - Tensão na fase $c$ [V]
+                \item Vab - Tensão entre as fases $a$ e $b$ [V]
+                \item Vbc - Tensão entre as fases $b$ e $c$ [V]
                 \item Tl - Torque da carga [N.m]
             \end{enumerate}
             \item Saídas
@@ -211,6 +210,30 @@ title=TBD.~\thetcbcounter: #2,#1}
 
 \chapter{Ferramentas adicionais}
 
+    \section{Conversão de tensões}
+        Foi desenvolvido um bloco para converter as tensões individuais de cada fase ($V_a$, $V_b$ e $V_c$) nas tensões entre as fases ($v_ab$ e $v_bc$, que são as entradas do bloco BLDC), ilustrado na figura \ref{fig:bloco_conversao_tensoes}.
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width = 0.15\textwidth]{bloco_conversao_tensoes}
+            \caption{Bloco para converter as tensões individuais em tensões entre fases}
+            \label{fig:bloco_conversao_tensoes}
+        \end{figure}
+
+        \begin{itemize}
+            \item Entradas
+                \begin{enumerate}
+                    \item $Va$ - Tensão na fase $a$
+                    \item $Vb$ - Tensão na fase $b$
+                    \item $Vc$ - Tensão na fase $c$
+                \end{enumerate}
+            \item Saídas
+                \begin{enumerate}
+                    \item $v_{ab}$ - Tensão entre as fases $a$ e $b$
+                    \item $v_{bc}$ - Tensão entre as fases $b$ e $c$
+                \end{enumerate}
+        \end{itemize}
+
+    \newpage
     \section{Medição de posição}
         Para medição de posição angular do rotor foi desenvolvido um bloco que simula o funcionamento de um encoder de quadratura, ilustrado na figura \ref{fig:bloco_encoder}. O número de pulsos por revolução pode ser configurado clicando-se duas vezes no bloco.
         \begin{figure}[ht]
@@ -235,6 +258,8 @@ title=TBD.~\thetcbcounter: #2,#1}
                 \end{enumerate}
         \end{itemize}
 
+
+    \newpage
     \section{Medição de velocidade}
         O algoritmo M/T para estimação de velocidade \cite{algoritmoMT} foi implementado no simulink e está ilustrado na figura \ref{fig:bloco_MT}
         \begin{figure}[ht]

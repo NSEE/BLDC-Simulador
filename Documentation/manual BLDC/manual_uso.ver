@@ -23,4 +23,8 @@
  & 24.06.15
  & \listset {Juliano Laganá}
  & Correção da definição do parâmetro L. Na verdade é a indutância por fase descontada da indutância mútua.\\
+1.0.5
+ & 25.06.15
+ & \listset {Juliano Laganá}
+ & Inclusão do modelo de atrito de Coulomb\\
 \end {longtable}
