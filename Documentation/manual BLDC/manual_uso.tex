@@ -96,7 +96,7 @@ title=TBD.~\thetcbcounter: #2,#1}
     \section{Modelo matemático}
     \label{sec:modelo_matematico}
         \begin{itemize}
-            \item Dinâmica mecânica, com atrito viscoso e atrito de Coulomb: 
+            \item Dinâmica mecânica, com atrito viscoso e atrito de Coulomb:
                 $$J.\frac{d^2\theta_m}{dt^2}=T_e-T_l-T_{at1}-T_{at2}$$
                 $$T_{at1} = K_d.\frac{d\theta_m}{dt}$$
                  \begin{displaymath}
@@ -131,7 +131,7 @@ title=TBD.~\thetcbcounter: #2,#1}
             \item[$T_{at2}$] = Torque devido ao atrito de Coulomb
             \item[$T_k$] = Magnitude do torque devido ao atrito cinético
             \item[$T_s$] = Magnitude máxima do torque devido ao atrito estático
-            
+
             \item[$K_e$] = Constante de força contraeletromotriz
             \item[$K_t$] = Constante de torque
             \item[$P$] = Número de pólos
@@ -157,9 +157,9 @@ title=TBD.~\thetcbcounter: #2,#1}
             \item[$f_a(\theta_e)$] = Função que reproduz o comportamento trapezoidal da força contraeletromotriz na fase $a$
             \item[$f_b(\theta_e)$] = Função que reproduz o comportamento trapezoidal da força contraeletromotriz na fase $b$
             \item[$f_c(\theta_e)$] = Função que reproduz o comportamento trapezoidal da força contraeletromotriz na fase $c$
-            
+
             \item[$sign(x)$] = Retorna 1 se $x$ é não-negativo, $-1$ caso contrário.
-            \item[$min(a,b)$] = Retorna $a$ se $a>b$, $b$ caso contrário. 
+            \item[$min(a,b)$] = Retorna $a$ se $a>b$, $b$ caso contrário.
 
 
         \end{description}
@@ -168,6 +168,8 @@ title=TBD.~\thetcbcounter: #2,#1}
 
     \section{Bloco BLDC}
         O modelo matemático apresentado na seção \ref{sec:modelo_matematico} foi implementado no bloco ``BLDC'' ilustrado na figura \ref{fig:bloco_BLDC}. Todos os parâmetros do motor podem ser alterados clicando-se duas vezes em cima do bloco.
+        
+        \textbf{Atenção:} desde a adição do modelo de atrito de Coulomb, esse bloco não suporta mais simulação com fixed-step solvers. Caso um fixed-step solver seja utilizado, o simulador apresentará comportamento anormal.
         \begin{figure}[ht]
             \centering
             \includegraphics[width=0.3\textwidth]{bloco_BLDC}

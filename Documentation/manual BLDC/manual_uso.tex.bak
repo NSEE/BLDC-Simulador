@@ -59,6 +59,7 @@ title=TBD.~\thetcbcounter: #2,#1}
   \vhEntry{1.0.2}{24.06.15}{Juliano Laganá}{Substituição do modelo elétrico de fases individuais pelo modelo elétrico com as fases acopladas.}
   \vhEntry{1.0.3}{24.06.15}{Juliano Laganá}{Adição do bloco de conversão de tensões.}
   \vhEntry{1.0.4}{24.06.15}{Juliano Laganá}{Correção da definição do parâmetro L. Na verdade é a indutância por fase descontada da indutância mútua.}
+  \vhEntry{1.0.5}{25.06.15}{Juliano Laganá}{Inclusão do modelo de atrito de Coulomb}
 \end{versionhistory}
 
 
@@ -93,11 +94,20 @@ title=TBD.~\thetcbcounter: #2,#1}
         \end{itemize}
 
     \section{Modelo matemático}
-    O modelo matemático elétrico implementado é o proposto por \cite{baldursson}.
     \label{sec:modelo_matematico}
         \begin{itemize}
-            \item Dinâmica mecânica: $$J.\frac{d^2\theta_m}{dt^2}=T_e-T_l-K_d.\frac{d\theta_m}{dt}$$
-            \item Dinâmica elétrica:
+            \item Dinâmica mecânica, com atrito viscoso e atrito de Coulomb:
+                $$J.\frac{d^2\theta_m}{dt^2}=T_e-T_l-T_{at1}-T_{at2}$$
+                $$T_{at1} = K_d.\frac{d\theta_m}{dt}$$
+                 \begin{displaymath}
+                   T_{at2} = \left\{
+                     \begin{array}{lr}
+                       -T_k.sign(\frac{d\theta}{dt}) & : \frac{d\theta_m}{dt} \neq 0\\
+                       -min(T_s,T_e-T_l).sign(T_e-T_l) & : \frac{d\theta_m}{dt} = 0
+                     \end{array}
+                   \right.
+                \end{displaymath}
+            \item Dinâmica elétrica, como proposto por \cite{baldursson}:
                 $$v_{ab} = R(i_a-i_b)+L\frac{d}{dt}(i_a-i_b)+e_a-e_b$$
                 $$v_{bc} = R(i_a+2i_b)+L\frac{d}{dt}(i_a+2i_b)+e_b-e_c$$
                 $$i_a+i_b+i_c=0$$
@@ -117,6 +127,11 @@ title=TBD.~\thetcbcounter: #2,#1}
         \begin{description}
             \item[$J$] = Inércia do sistema motor+carga
             \item[$K_d$] = Coeficiente de atrito viscoso do mancal
+            \item[$T_{at1}$] = Torque devido ao atrito viscoso
+            \item[$T_{at2}$] = Torque devido ao atrito de Coulomb
+            \item[$T_k$] = Magnitude do torque devido ao atrito cinético
+            \item[$T_s$] = Magnitude máxima do torque devido ao atrito estático
+
             \item[$K_e$] = Constante de força contraeletromotriz
             \item[$K_t$] = Constante de torque
             \item[$P$] = Número de pólos
@@ -143,6 +158,9 @@ title=TBD.~\thetcbcounter: #2,#1}
             \item[$f_b(\theta_e)$] = Função que reproduz o comportamento trapezoidal da força contraeletromotriz na fase $b$
             \item[$f_c(\theta_e)$] = Função que reproduz o comportamento trapezoidal da força contraeletromotriz na fase $c$
 
+            \item[$sign(x)$] = Retorna 1 se $x$ é não-negativo, $-1$ caso contrário.
+            \item[$min(a,b)$] = Retorna $a$ se $a>b$, $b$ caso contrário.
+
 
         \end{description}
 
@@ -150,6 +168,8 @@ title=TBD.~\thetcbcounter: #2,#1}
 
     \section{Bloco BLDC}
         O modelo matemático apresentado na seção \ref{sec:modelo_matematico} foi implementado no bloco ``BLDC'' ilustrado na figura \ref{fig:bloco_BLDC}. Todos os parâmetros do motor podem ser alterados clicando-se duas vezes em cima do bloco.
+        
+        \textbf{Atenção:} desde a adição do modelo de atrito de Coulomb, esse bloco não suporta mais simulação com fixed-step solvers.
         \begin{figure}[ht]
             \centering
             \includegraphics[width=0.3\textwidth]{bloco_BLDC}
@@ -174,6 +194,7 @@ title=TBD.~\thetcbcounter: #2,#1}
                     \item Torques [3x1] - $T_a$, $T_b$ e $T_c$ [N.m]
                     \item FCEMs [3x1] - $e_a$, $e_b$ e $e_c$ [V]
                     \item Torque total - $T_e$ [N.m]
+                    \item Torque de atrito - $T_{at2}$
                 \end{itemize}
             \end{enumerate}
         \end{itemize}
