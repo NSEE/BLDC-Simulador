@@ -111,11 +111,11 @@ title=TBD.~\thetcbcounter: #2,#1}
                 $$v_{ab} = R(i_a-i_b)+L\frac{d}{dt}(i_a-i_b)+e_a-e_b$$
                 $$v_{bc} = R(i_a+2i_b)+L\frac{d}{dt}(i_a+2i_b)+e_b-e_c$$
                 $$i_a+i_b+i_c=0$$
-            \item Forças contraeletromotrizes geradas em cada fase:
+            \item Forças contraeletromotrizes geradas em cada fase \cite{baldursson}:
                 $$e_a = \frac{f_a(\theta_e).K_e}{2}.\frac{d\theta_m}{dt} $$
                 $$e_b = \frac{f_b(\theta_e).K_e}{2}.\frac{d\theta_m}{dt} $$
                 $$e_c = \frac{f_c(\theta_e).K_e}{2}.\frac{d\theta_m}{dt} $$
-            \item Torque gerado por cada fase e torque elétrico total:
+            \item Torque gerado por cada fase e torque elétrico total \cite{baldursson}:
                 $$T_a=\frac{f_a(\theta_e).K_t.i_a}{2}$$
                 $$T_b=\frac{f_b(\theta_e).K_t.i_b}{2}$$
                 $$T_c=\frac{f_c(\theta_e).K_t.i_c}{2}$$
@@ -168,7 +168,7 @@ title=TBD.~\thetcbcounter: #2,#1}
 
     \section{Bloco BLDC}
         O modelo matemático apresentado na seção \ref{sec:modelo_matematico} foi implementado no bloco ``BLDC'' ilustrado na figura \ref{fig:bloco_BLDC}. Todos os parâmetros do motor podem ser alterados clicando-se duas vezes em cima do bloco.
-        
+
         \textbf{Atenção:} desde a adição do modelo de atrito de Coulomb, esse bloco não suporta mais simulação com fixed-step solvers. Caso um fixed-step solver seja utilizado, o simulador apresentará comportamento anormal.
         \begin{figure}[ht]
             \centering
