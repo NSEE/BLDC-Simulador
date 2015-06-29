@@ -60,6 +60,7 @@ title=TBD.~\thetcbcounter: #2,#1}
   \vhEntry{1.0.3}{24.06.15}{Juliano Laganá}{Adição do bloco de conversão de tensões.}
   \vhEntry{1.0.4}{24.06.15}{Juliano Laganá}{Correção da definição do parâmetro L. Na verdade é a indutância por fase descontada da indutância mútua.}
   \vhEntry{1.0.5}{25.06.15}{Juliano Laganá}{Inclusão do modelo de atrito de Coulomb}
+  \vhEntry{1.0.6}{29.06.15}{Juliano Laganá}{Atualização: agora o usuário pode definir o formato de back-emf que quiser}
 \end{versionhistory}
 
 
@@ -90,7 +91,6 @@ title=TBD.~\thetcbcounter: #2,#1}
             \item Todas as fases de alimentação do BLDC tem a mesma indutância.
             \item Todos as partes do sistema são consideradas corpos rígidos.
             \item O atrito no mancal pode ser modelado como atrito viscoso (diretamente proporcional à velocidade angular do rotor em relação ao estator) + atrito de Coulomb.
-            \item A força contraeletromotriz gerada em cada fase de alimentação tem o formato trapezoidal.
         \end{itemize}
 
     \section{Modelo matemático}
@@ -154,9 +154,9 @@ title=TBD.~\thetcbcounter: #2,#1}
             \item[$T_c$] = Torque elétrico gerado pela fase $c$ no rotor
             \item[$T_e$] = Torque elétrico total aplicado no rotor
 
-            \item[$f_a(\theta_e)$] = Função que reproduz o comportamento trapezoidal da força contraeletromotriz na fase $a$
-            \item[$f_b(\theta_e)$] = Função que reproduz o comportamento trapezoidal da força contraeletromotriz na fase $b$
-            \item[$f_c(\theta_e)$] = Função que reproduz o comportamento trapezoidal da força contraeletromotriz na fase $c$
+            \item[$f_a(\theta_e)$] = Função que reproduz o comportamento da força contraeletromotriz na fase $a$ (padrão: comportamento trapezoidal)
+            \item[$f_b(\theta_e)$] = Função que reproduz o comportamento da força contraeletromotriz na fase $b$ (padrão: comportamento trapezoidal)
+            \item[$f_c(\theta_e)$] = Função que reproduz o comportamento da força contraeletromotriz na fase $c$ (padrão: comportamento trapezoidal)
 
             \item[$sign(x)$] = Retorna 1 se $x$ é não-negativo, $-1$ caso contrário.
             \item[$min(a,b)$] = Retorna $a$ se $a>b$, $b$ caso contrário.
@@ -168,6 +168,10 @@ title=TBD.~\thetcbcounter: #2,#1}
 
     \section{Bloco BLDC}
         O modelo matemático apresentado na seção \ref{sec:modelo_matematico} foi implementado no bloco ``BLDC'' ilustrado na figura \ref{fig:bloco_BLDC}. Todos os parâmetros do motor podem ser alterados clicando-se duas vezes em cima do bloco.
+        
+        Caso o usuário queira, ao invés de utilizar o formato padrão trapezoidal para o formato das forças contra-eletromotrizes, ele pode especificar um formato diferente nos parâmetros do bloco. Para tal, é necessário informar três matrizes $n\times2$ que servirão de lookup table. A primeira coluna dessas matrizes é o tempo (deve começar em zero, ser monotonicamente crescente e terminar em 360) e a segunda coluna é o valor de $f(\theta_e)$ para aquela fase. 
+        
+        Exemplo: \texttt{backemfa = [linspace(0,360,200)',sin(linspace(0,360,200)')];}
 
         \textbf{Atenção:} desde a adição do modelo de atrito de Coulomb, esse bloco não suporta mais simulação com fixed-step solvers. Caso um fixed-step solver seja utilizado, uma mensagem de erro será apresentada ao usuário.
         \begin{figure}[ht]

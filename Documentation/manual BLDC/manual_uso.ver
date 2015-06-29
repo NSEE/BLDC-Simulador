@@ -27,4 +27,8 @@
  & 25.06.15
  & \listset {Juliano Laganá}
  & Inclusão do modelo de atrito de Coulomb\\
+1.0.6
+ & 29.06.15
+ & \listset {Juliano Laganá}
+ & Atualização: agora o usuário pode definir o formato de back-emf que quiser\\
 \end {longtable}
