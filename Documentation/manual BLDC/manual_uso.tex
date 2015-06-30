@@ -185,21 +185,21 @@ title=TBD.~\thetcbcounter: #2,#1}
         \begin{itemize}
             \item Entradas
             \begin{enumerate}
-                \item Vab - Tensão entre as fases $a$ e $b$ [V]
-                \item Vbc - Tensão entre as fases $b$ e $c$ [V]
-                \item Tl - Torque da carga [N.m]
+                \item \texttt{Vab} - Tensão entre as fases $a$ e $b$ [V]
+                \item \texttt{Vbc} - Tensão entre as fases $b$ e $c$ [V]
+                \item \texttt{Tl} - Torque da carga [N.m]
             \end{enumerate}
             \item Saídas
             \begin{enumerate}
-                \item theta\_m - Ângulo entre o rotor e o estator ($\theta_m$) [rad]
-                \item w\_m - Velocidade angular entre o rotor e o estator ($\frac{d\theta_m}{dt}$) [rad/s]
-                \item internal - Sinal multiplexado [4x1] composto pelos seguintes sinais:
+                \item \texttt{theta\_m} - Ângulo entre o rotor e o estator ($\theta_m$) [rad]
+                \item \texttt{w\_m} - Velocidade angular entre o rotor e o estator ($\frac{d\theta_m}{dt}$) [rad/s]
+                \item \texttt{internal} - Sinal multiplexado [4x1] composto pelos seguintes sinais:
                 \begin{itemize}
-                    \item Correntes [3x1] - $i_a$, $i_b$ e $i_c$ [A]
-                    \item Torques [3x1] - $T_a$, $T_b$ e $T_c$ [N.m]
-                    \item FCEMs [3x1] - $e_a$, $e_b$ e $e_c$ [V]
-                    \item Torque total - $T_e$ [N.m]
-                    \item Torque de atrito - $T_{at2}$
+                    \item \texttt{Correntes} [3x1] - $i_a$, $i_b$ e $i_c$ [A]
+                    \item \texttt{Torques} [3x1] - $T_a$, $T_b$ e $T_c$ [N.m]
+                    \item \texttt{FCEMs} [3x1] - $e_a$, $e_b$ e $e_c$ [V]
+                    \item \texttt{Torque total} - $T_e$ [N.m]
+                    \item \texttt{Torque de atrito} - $T_{at2}$
                 \end{itemize}
             \end{enumerate}
         \end{itemize}
@@ -216,15 +216,15 @@ title=TBD.~\thetcbcounter: #2,#1}
         \begin{itemize}
             \item Entradas
             \begin{enumerate}
-                \item V - Tensão que será aplicada nas fases quando forem acionadas [V]
-                \item theta\_m - Essa porta deve ser conectada na saída theta\_m do simulador BLDC [rad/s]
+                \item \texttt{V} - Tensão que será aplicada nas fases quando forem acionadas [V]
+                \item \texttt{theta\_m} - Essa porta deve ser conectada na saída \texttt{theta\_m} do simulador BLDC [rad/s]
             \end{enumerate}
             \item Saídas
             \begin{enumerate}
-                \item Va - Tensão que deve ser aplicada na fase $a$ [V]
-                \item Vb - Tensão que deve ser aplicada na fase $b$ [V]
-                \item Vc - Tensão que deve ser aplicada na fase $c$ [V]
-                \item Halls - Vetor [3x1] que contém os níveis lógicos de cada sensor Hall acoplado ao motor ($H_1$, $H_2$ e $H_3$)
+                \item \texttt{Va} - Tensão que deve ser aplicada na fase $a$ [V]
+                \item \texttt{Vb} - Tensão que deve ser aplicada na fase $b$ [V]
+                \item \texttt{Vc} - Tensão que deve ser aplicada na fase $c$ [V]
+                \item \texttt{Halls} - Vetor [3x1] que contém os níveis lógicos de cada sensor Hall acoplado ao motor ($H_1$, $H_2$ e $H_3$)
             \end{enumerate}
         \end{itemize}
 
@@ -242,14 +242,14 @@ title=TBD.~\thetcbcounter: #2,#1}
         \begin{itemize}
             \item Entradas
                 \begin{enumerate}
-                    \item $Va$ - Tensão na fase $a$
-                    \item $Vb$ - Tensão na fase $b$
-                    \item $Vc$ - Tensão na fase $c$
+                    \item \texttt{Va} - Tensão na fase $a$
+                    \item \texttt{Vb} - Tensão na fase $b$
+                    \item \texttt{Vc} - Tensão na fase $c$
                 \end{enumerate}
             \item Saídas
                 \begin{enumerate}
-                    \item $v_{ab}$ - Tensão entre as fases $a$ e $b$
-                    \item $v_{bc}$ - Tensão entre as fases $b$ e $c$
+                    \item \texttt{Vab} - Tensão entre as fases $a$ e $b$
+                    \item \texttt{Vbc} - Tensão entre as fases $b$ e $c$
                 \end{enumerate}
         \end{itemize}
 
@@ -266,11 +266,11 @@ title=TBD.~\thetcbcounter: #2,#1}
         \begin{itemize}
             \item Entradas
                 \begin{enumerate}
-                    \item Theta - Ângulo mecânico entre o rotor e o estator. [graus]
+                    \item \texttt{Theta} - Ângulo mecânico entre o rotor e o estator. [graus]
                 \end{enumerate}
             \item Saídas
                 \begin{enumerate}
-                    \item Theta\_amostrado - Ângulo mecânico entre o rotor e o estator, amostrado pelo encoder de quadratura simulado. [graus]
+                    \item \texttt{Theta\_amostrado} - Ângulo mecânico entre o rotor e o estator, amostrado pelo encoder de quadratura simulado. [graus]
                 \end{enumerate}
             \item Restrições
                 \begin{enumerate}
@@ -293,11 +293,11 @@ title=TBD.~\thetcbcounter: #2,#1}
 
             \item Entradas
                 \begin{enumerate}
-                    \item Posicao - Essa entrada deve ser conectada à saída ``Theta\_amostrado'' do bloco simulador de encoder de quadratura. [graus]
+                    \item \texttt{Posicao} - Essa entrada deve ser conectada à saída ``Theta\_amostrado'' do bloco simulador de encoder de quadratura. [graus]
                 \end{enumerate}
             \item Saídas
                 \begin{enumerate}
-                    \item Velocidade - Velocidade estimada pelo algorimo M/T. [graus/s]
+                    \item \texttt{Velocidade} - Velocidade estimada pelo algorimo M/T. [graus/s]
                 \end{enumerate}
         \end{itemize}
 
