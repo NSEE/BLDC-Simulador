@@ -31,4 +31,8 @@
  & 29.06.15
  & \listset {Juliano Laganá}
  & Atualização: agora o usuário pode definir o formato de back-emf que quiser\\
+1.0.7
+ & 30.06.15
+ & \listset {Juliano Laganá}
+ & Atualização do bloco de comutação six step: agora ele está desacoplado do BLDC\\
 \end {longtable}

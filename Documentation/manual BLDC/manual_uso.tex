@@ -61,6 +61,7 @@ title=TBD.~\thetcbcounter: #2,#1}
   \vhEntry{1.0.4}{24.06.15}{Juliano Laganá}{Correção da definição do parâmetro L. Na verdade é a indutância por fase descontada da indutância mútua.}
   \vhEntry{1.0.5}{25.06.15}{Juliano Laganá}{Inclusão do modelo de atrito de Coulomb}
   \vhEntry{1.0.6}{29.06.15}{Juliano Laganá}{Atualização: agora o usuário pode definir o formato de back-emf que quiser}
+  \vhEntry{1.0.7}{30.06.15}{Juliano Laganá}{Atualização do bloco de comutação six step: agora ele está desacoplado do BLDC}
 \end{versionhistory}
 
 
@@ -168,9 +169,9 @@ title=TBD.~\thetcbcounter: #2,#1}
 
     \section{Bloco BLDC}
         O modelo matemático apresentado na seção \ref{sec:modelo_matematico} foi implementado no bloco ``BLDC'' ilustrado na figura \ref{fig:bloco_BLDC}. Todos os parâmetros do motor podem ser alterados clicando-se duas vezes em cima do bloco.
-        
-        Caso o usuário queira, ao invés de utilizar o formato padrão trapezoidal para o formato das forças contra-eletromotrizes, ele pode especificar um formato diferente nos parâmetros do bloco. Para tal, é necessário informar três matrizes $n\times2$ que servirão de lookup table. A primeira coluna dessas matrizes é o tempo (deve começar em zero, ser monotonicamente crescente e terminar em 360) e a segunda coluna é o valor de $f(\theta_e)$ para aquela fase. 
-        
+
+        Caso o usuário queira, ao invés de utilizar o formato padrão trapezoidal para o formato das forças contra-eletromotrizes, ele pode especificar um formato diferente nos parâmetros do bloco. Para tal, é necessário informar três matrizes $n\times2$ que servirão de lookup table. A primeira coluna dessas matrizes é o tempo (deve começar em zero, ser monotonicamente crescente e terminar em 360) e a segunda coluna é o valor de $f(\theta_e)$ para aquela fase.
+
         Exemplo: \texttt{backemfa = [linspace(0,360,200)',sin(linspace(0,360,200)')];}
 
         \textbf{Atenção:} desde a adição do modelo de atrito de Coulomb, esse bloco não suporta mais simulação com fixed-step solvers. Caso um fixed-step solver seja utilizado, uma mensagem de erro será apresentada ao usuário.
@@ -204,32 +205,26 @@ title=TBD.~\thetcbcounter: #2,#1}
         \end{itemize}
 
     \section{Bloco BLDC com lógica de comutação em blocos}
-        Para o devido funcionamento do BLDC é necessário comutar a tensão entre cada fase periodicamente. O bloco apresentado na figura \ref{fig:bloco_BLDC_block_commutation} implementa internamente a estratégia de comutação em blocos através da utilização de três sensores de efeito hall separados por 120 graus. Todos os parâmetros do motor podem ser alterados clicando-se duas vezes em cima do bloco.
+        Para o devido funcionamento do BLDC é necessário comutar a tensão entre cada fase periodicamente. O bloco apresentado na figura \ref{fig:bloco_BLDC_block_commutation} implementa internamente a estratégia de comutação em blocos através da utilização de três sensores de efeito hall separados por 120 graus. Os parâmetros da comutação (número de pólos do motor que será comutado) podem ser alterados clicando-se duas vezes em cima do bloco.
         \begin{figure}[ht]
             \centering
-            \includegraphics[width=0.3\textwidth]{bloco_BLDC_block_commutation}
-            \caption{Bloco simulink para simulação do BLDC utilizando comutação em blocos}
+            \includegraphics[width=0.3\textwidth]{bloco_acionamento_six_step}
+            \caption{Bloco simulink que implementa a comutação em blocos}
             \label{fig:bloco_BLDC_block_commutation}
         \end{figure}
 
         \begin{itemize}
             \item Entradas
             \begin{enumerate}
-                \item V - Tensão aplicada nas fases [V]
-                \item Tl - Torque da carga [N.m]
+                \item V - Tensão que será aplicada nas fases quando forem acionadas [V]
+                \item theta\_m - Essa porta deve ser conectada na saída theta\_m do simulador BLDC [rad/s]
             \end{enumerate}
             \item Saídas
             \begin{enumerate}
-                \item Theta\_m - Ângulo entre o rotor e o estator ($\theta_m$) [rad]
-                \item w\_m - Velocidade angular entre o rotor e o estator ($\frac{d\theta_m}{dt}$) [rad/s]
-                \item internal - Sinal multiplexado [4x1] composto pelos seguintes sinais:
-                \begin{itemize}
-                    \item Correntes [3x1] - $i_a$, $i_b$ e $i_c$ [A]
-                    \item Torques [3x1] - $T_a$, $T_b$ e $T_c$ [N.m]
-                    \item FCEMs [3x1] - $e_a$, $e_b$ e $e_c$ [V]
-                    \item Torque total - $T_e$ [N.m]
-                    \item Hall [3x1] - $H_1$, $H_2$ e $H_3$ (Níveis lógicos de cada sensor Hall acoplado ao motor)
-                \end{itemize}
+                \item Va - Tensão que deve ser aplicada na fase $a$ [V]
+                \item Vb - Tensão que deve ser aplicada na fase $b$ [V]
+                \item Vc - Tensão que deve ser aplicada na fase $c$ [V]
+                \item Hall - Vetor [3x1] que contém os níveis lógicos de cada sensor Hall acoplado ao motor ($H_1$, $H_2$ e $H_3$)
             \end{enumerate}
         \end{itemize}
 
