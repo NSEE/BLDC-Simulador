@@ -16,3 +16,4 @@ ensaio_02.csv:
 
 ensaio01_02.mat:
 	- Concatenação temporal do ensaio02 e do ensaio01 (nessa ordem)
+    - Os dados foram: [ensaio02(1:fim_ensaio2) ; ensaio01(comeco_ensaio1:<até o final>)
