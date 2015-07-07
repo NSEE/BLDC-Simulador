@@ -1,12 +1,12 @@
 Model {
-  Name			  "bldc_foc"
+  Name			  "acionamento_vetorial1"
   Version		  8.0
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.63"
+    ComputedModelVersion    "1.64"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -55,8 +55,8 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1884.0, 880.0]
-	ZoomFactor		[2.195876288659794]
-	Offset			[239.01408450704224, 59.624413145539933]
+	ZoomFactor		[1.5]
+	Offset			[75.626827632461271, -10.619315895372228]
       }
     }
   }
@@ -66,9 +66,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "h3now"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Mar 25 10:54:52 2015"
-  RTWModifiedTimeStamp	  349181674
-  ModelVersionFormat	  "1.%<AutoIncrement:63>"
+  LastModifiedDate	  "Tue Jul 07 11:25:44 2015"
+  RTWModifiedTimeStamp	  358169124
+  ModelVersionFormat	  "1.%<AutoIncrement:64>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -884,7 +884,7 @@ Model {
     }
   }
   System {
-    Name		    "bldc_foc"
+    Name		    "acionamento_vetorial1"
     Location		    [-8, -8, 1928, 1048]
     Open		    on
     ModelBrowserVisibility  off
@@ -897,9 +897,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    on
-    ZoomFactor		    "219"
+    ZoomFactor		    "150"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "272"
+    SIDHighWatermark	    "273"
     Block {
       BlockType		      Reference
       Name		      "Acionamento Vetorial"
@@ -907,7 +907,7 @@ Model {
       Ports		      [5, 3]
       Position		      [420, 122, 635, 268]
       ZOrder		      252
-      LibraryVersion	      "1.33"
+      LibraryVersion	      "1.48"
       SourceBlock	      "BLDC/Acionamento Vetorial"
       SourceType	      "Acionamento Vetorial"
       P			      "8"
@@ -916,10 +916,10 @@ Model {
       BlockType		      Reference
       Name		      "BLDC"
       SID		      "243"
-      Ports		      [4, 3]
-      Position		      [895, 123, 1055, 317]
+      Ports		      [3, 3]
+      Position		      [895, 133, 1055, 327]
       ZOrder		      110
-      LibraryVersion	      "1.33"
+      LibraryVersion	      "1.48"
       SourceBlock	      "BLDC/BLDC"
       SourceType	      "Simulador de um motor BLDC"
       J			      "3.84e-7 + 1e-4"
@@ -929,6 +929,8 @@ Model {
       Kt		      "11.3e-3"
       Ke		      "11.3e-3"
       Kd		      "0"
+      F_stick		      "0"
+      F_slip		      "0"
       default_fcem	      on
       fcem_a		      "fcem_a"
       fcem_b		      "fcem_b"
@@ -946,7 +948,7 @@ Model {
       Name		      "Bus\nSelector"
       SID		      "198"
       Ports		      [1, 2]
-      Position		      [720, 320, 725, 360]
+      Position		      [720, 335, 725, 375]
       ZOrder		      -2
       BlockMirror	      on
       NamePlacement	      "alternate"
@@ -964,6 +966,17 @@ Model {
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Conversão"
+      SID		      "273"
+      Ports		      [3, 2]
+      Position		      [795, 130, 840, 260]
+      ZOrder		      254
+      LibraryVersion	      "1.48"
+      SourceBlock	      "BLDC/Conversão"
+      SourceType	      "SubSystem"
     }
     Block {
       BlockType		      Mux
@@ -1044,7 +1057,7 @@ Model {
     Line {
       SrcBlock		      "BLDC"
       SrcPort		      3
-      Points		      [9, 0; 0, 55]
+      Points		      [9, 0; 0, 60]
       DstBlock		      "Bus\nSelector"
       DstPort		      1
     }
@@ -1052,7 +1065,7 @@ Model {
       SrcBlock		      "Tl"
       SrcPort		      1
       DstBlock		      "BLDC"
-      DstPort		      4
+      DstPort		      3
     }
     Line {
       Labels		      [0, 0]
@@ -1064,7 +1077,7 @@ Model {
     Line {
       SrcBlock		      "BLDC"
       SrcPort		      1
-      Points		      [2, 0; 0, -89; -687, 0; 0, 99]
+      Points		      [15, 0; 0, -99; -700, 0; 0, 99]
       DstBlock		      "Acionamento Vetorial"
       DstPort		      2
     }
@@ -1073,7 +1086,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "BLDC"
       SrcPort		      2
-      Points		      [17, 0; 0, -127; -738, 0; 0, 102; 1, 0]
+      Points		      [36, 0; 0, -187; -756, 0; 0, 152]
       Branch {
 	DstBlock		"Acionamento Vetorial"
 	DstPort			3
@@ -1082,24 +1095,6 @@ Model {
 	DstBlock		"rad/s -> rpm"
 	DstPort			1
       }
-    }
-    Line {
-      SrcBlock		      "Acionamento Vetorial"
-      SrcPort		      1
-      DstBlock		      "BLDC"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Acionamento Vetorial"
-      SrcPort		      2
-      DstBlock		      "BLDC"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Acionamento Vetorial"
-      SrcPort		      3
-      DstBlock		      "BLDC"
-      DstPort		      3
     }
     Line {
       SrcBlock		      "w_ref\n[rpm]"
@@ -1127,7 +1122,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Bus\nSelector"
       SrcPort		      1
-      Points		      [-329, 0; 0, -105]
+      Points		      [-329, 0; 0, -120]
       DstBlock		      "Acionamento Vetorial"
       DstPort		      4
     }
@@ -1136,9 +1131,42 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Bus\nSelector"
       SrcPort		      2
-      Points		      [-316, 0; 0, -95]
+      Points		      [-316, 0; 0, -110]
       DstBlock		      "Acionamento Vetorial"
       DstPort		      5
+    }
+    Line {
+      SrcBlock		      "Conversão"
+      SrcPort		      1
+      DstBlock		      "BLDC"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Conversão"
+      SrcPort		      2
+      Points		      [35, 0]
+      DstBlock		      "BLDC"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Acionamento Vetorial"
+      SrcPort		      1
+      Points		      [140, 0]
+      DstBlock		      "Conversão"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Acionamento Vetorial"
+      SrcPort		      2
+      DstBlock		      "Conversão"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Acionamento Vetorial"
+      SrcPort		      3
+      Points		      [140, 0]
+      DstBlock		      "Conversão"
+      DstPort		      3
     }
     Annotation {
       SID		      "258"
