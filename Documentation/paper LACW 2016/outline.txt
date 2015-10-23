@@ -1,0 +1,44 @@
+Introduction
+
+Modeling
+
+	- System of interest
+	- Hypotheses
+	- Modeling of the mechanical subsystem
+		- Newton's law
+		- Viscous friction
+		- Coulomb friction
+	- Modeling of the electrical subsystem
+		- Kirchoff's laws x citation to S. Baldursson?*
+			- observation about the mutual inductance being disregarded
+		- Back-emfs in each phase
+		- Torque in each phase, total torque
+
+Implementation
+
+	- BLDC implementation
+		- Perhaps short text explaining that most parts of the equations can be immediately implemented, with exceptions being discussed in the following
+		- how the back-emfs were implemented
+			- lookup table, default or user-specified
+		- how the coulomb friction was implemented
+			- zero-crossing information
+	- Block commutation
+		- short explanation (maybe picture)
+		- hall sensors signals generation (using LUT)
+		- decoder
+	- Encoder
+		- quadrature
+		- using hall sensors
+	- M, T and M/T**
+
+Validation
+
+	- Description of the real motor being used, including all parameters and short expl. on how they were calculated
+	- Choice of input
+	- Output from simulation x Real measurements
+
+Conclusion
+
+
+* citar Baldursson ou seguir a trilha dele?
+** entrar em detalhes sobre o erro máximo de cada método?
