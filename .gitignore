@@ -32,3 +32,6 @@ slprj/
 *.mtc1
 *.out
 *.synctex.gz
+*.synctex
+*.bak
+*.sav
