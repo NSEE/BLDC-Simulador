@@ -1,5 +1,6 @@
 *.autosave
 *.log
+*~
 
 # Ignores para Matlab
 *.asv
@@ -35,3 +36,5 @@ slprj/
 *.synctex
 *.bak
 *.sav
+*_latexmk
+*.fls
