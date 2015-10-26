@@ -103,7 +103,7 @@
     \subsection{Electrical subsystem analysis}
     \label{sec:elec_subsystem}
 
-     A diagram of the electrical subsystem is shown in figure \ref{fig:electrical_subsys}, assuming \ref{hyp:same_R} and \ref{hyp:same_L}. From it, it's possible to obtain expressions for $v_{ab}$, $v_{bc}$ and $v_{ca}$ (defined as $v_a-v_b$, $v_b-v_c$ and $v_c-v_a$, respectively) [\textcolor{red}{citation needed}]. That, added to the fact that the currents in each phase must sum to zero (Kirchhoff's current law in the central node) and \ref{hyp:mutual_inductances_negligible}, leads to the following equations:
+    A diagram of the electrical subsystem is shown in figure \ref{fig:electrical_subsys}, assuming \ref{hyp:same_R} and \ref{hyp:same_L}. From it, it's possible to obtain expressions for $v_{ab}$, $v_{bc}$ and $v_{ca}$ (defined as $v_a-v_b$, $v_b-v_c$ and $v_c-v_a$, respectively) \cite[p. 457-459]{krishnan}. That, added to the fact that the currents in each phase must sum to zero (Kirchhoff's current law in the central node) and \ref{hyp:mutual_inductances_negligible}, leads to the following equations:
 
     \begin{figure}[H]
         \center
@@ -171,7 +171,7 @@
 
     where $P$ is the motor's number of poles.
 
-    Through an analysis of the consumed power by the machine, it's possible to deduce the electromagnetic torque expression, assuming \ref{hyp:constant_airgap} [\textcolor{red}{citation needed}]. This can be further simplified by substituting equations \ref{eq:e_a} through \ref{eq:e_c} in the result. The final expression is
+    Through an analysis of the consumed power by the machine, it's possible to deduce the electromagnetic torque expression, assuming \ref{hyp:constant_airgap} \cite[p. 459]{krishnan}. This can be further simplified by substituting equations \ref{eq:e_a} through \ref{eq:e_c} in the result. The final expression is
 
     \begin{equation}
         T_e = \frac{K_t}{2}.\Big(f_a(\theta_e).i_a + f_b(\theta_e).i_b + f_c(\theta_e).i_c\Big).
@@ -241,12 +241,11 @@
 
     where $T_k$ is the static friction constant and $T_s$ is the kinetic friction constant.
 
-    Analogously to section \ref{sec:elec_subsystem}, equations \ref{eq:newtons_law_at_shaft} through \ref{eq:coulomb_friction_model} model the dynamic relationship between the electromagnetic torque and the angular position of the rotor. This equations, together with equations \ref{eq:v_ab} through \ref{eq:total_torque}, constitute the full mathematical model used in the simulator.
+    Analogously to section \ref{sec:elec_subsystem}, equations \ref{eq:newtons_law_at_shaft} through \ref{eq:coulomb_friction_model} model the dynamic relationship between the electromagnetic torque and the angular position of the rotor. This equations, together with equations \ref{eq:v_ab} through \ref{eq:total_torque}, constitute the full mathematical model used to simulate the BLDC. 
 
 
-
-
-
+    \bibliographystyle{plain}
+    \bibliography{bibliography.bib}
 
 
 \end{document}
