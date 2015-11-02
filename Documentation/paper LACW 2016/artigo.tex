@@ -40,42 +40,6 @@
 % useful for development
 \usepackage{color}
 
-% creates an environment for displaying hypotheses------------------------------------
-\usepackage[many]{tcolorbox}
-\usepackage{enumitem}
-\usepackage{amsmath,amssymb}
-\newcounter{myhypo}
-\renewcommand\themyhypo{(H\arabic{myhypo})} % How the labeling is going to be made
-\newtcolorbox{hypo}[1][]{
-  breakable,
-  enhanced,
-  top=0pt,
-  bottom=0pt,
-  nobeforeafter,
-  colback=white,
-  boxrule=0pt,
-  arc=0pt,
-  right=30pt,
-  left=20pt,
-  outer arc=0pt,
-  overlay={
-    \node[inner sep=0pt,anchor=east]
-    at (frame.east)
-    {\refstepcounter{myhypo}\themyhypo\label{#1}};
-  },
-}
-\newenvironment{hypotheses}
-  {\list{}{\setlength\leftmargin{0pt}\item\relax}}
-  {\endlist}
-\newcommand\Hypo[2][]{%
-  \begin{hypo}[#1]#2\end{hypo}}
-% ----------------------------------------------------------------------------------
-
-
-
-
-
-
 
 \begin{document}
 
@@ -84,18 +48,7 @@
 %    Primeiramente vamos definir o sistema de interesee. O que que vamos analisar de fato. Modelo matemático do que?
 %
 %    Vamos desenvolver o modelo matemático para um BLDC.
-%
-%    Algumas hipóteses simplificadoras foram feitas, para viabilizar a modelagem
-    \begin{hypotheses}
-        \Hypo[hyp:same_R]{All of the phases of the BLDC have the same resistance}
-        \Hypo[hyp:same_L]{All of the phases of the BLDC have the same inductance}
-        \Hypo[hyp:constant_airgap]{The airgap length is constant}
-        \Hypo[hyp:rigid_bodies]{All of the components in the mechanical subsystem are rigid bodies}
-        \Hypo[hyp:friction_model]{The friction torque acting on the shaft of the motor is composed of viscous friction (proportional to the angular velocity) and Coulomb friction}
-        \Hypo[hyp:mutual_inductances_negligible]{The mutual inductances are negligible \textcolor{red}{improve this sentence}...}
-        \Hypo[hyp:bemf_proportional_omega]{The back emf in each phase is proportional to the angular velocity of the motor}
-    \end{hypotheses}
-    \quad
+
 
 %    Para fazer um modelo desse sistema, começamos quebrando ele em dois subsistemas mais simples. Um subsist mecanico e um elétrico. O susbsitema elétrico é a parte elétrica mesmo, cuja entrada é a tensão em cada uma das bobinas e a saída é o torque que será aplicado no eixo do motor. O subsistema elétrico é a parte mecânica do motor, relacionada ao movimento do eixo; é o subsistema cuja entrada é o torque aplicado no eixo e a saída é a velocidade angular do eixo do motor. A seguir cada um dos subsistemas será analisado mais aprofundadamente.
 
@@ -103,7 +56,7 @@
     \subsection{Electrical subsystem analysis}
     \label{sec:elec_subsystem}
 
-    A diagram of the electrical subsystem is shown in figure \ref{fig:electrical_subsys}, assuming \ref{hyp:same_R} and \ref{hyp:same_L}. From it, it's possible to obtain expressions for $v_{ab}$, $v_{bc}$ and $v_{ca}$ (defined as $v_a-v_b$, $v_b-v_c$ and $v_c-v_a$, respectively) \cite[p. 457-459]{ref:electrical_modeling}. That, added to the fact that the currents in each phase must sum to zero (Kirchhoff's current law in the central node) and \ref{hyp:mutual_inductances_negligible}, leads to the following equations:
+    A diagram of the electrical subsystem is shown in figure \ref{fig:electrical_subsys}, assuming that all the phases have the same inductances and resistances. From it, it's possible to obtain expressions for $v_{ab}$, $v_{bc}$ and $v_{ca}$ (defined as $v_a-v_b$, $v_b-v_c$ and $v_c-v_a$, respectively) \cite[p. 457-459]{ref:electrical_modeling}. That, added to the fact that the currents in each phase must sum to zero (Kirchhoff's current law applied at the central node) and assuming that the mutual inductances are negligible, leads to the following equations:
 
     \begin{figure}[H]
         \center
@@ -146,7 +99,7 @@
         i_a+i_b+i_c=0.
     \end{equation}
 
-    Additionally, assuming \ref{hyp:bemf_proportional_omega}, we can write the back-emfs in each phase as
+    Additionally, since the back-emfs in each phase are proportional to the angular velocity, we can write them as
 
     \begin{equation}
         e_a = \frac{f_a(\theta_e).K_e}{2}.\frac{d\theta_m}{dt}
@@ -171,7 +124,7 @@
 
     where $P$ is the motor's number of poles.
 
-    Through an analysis of the consumed power by the machine, it's possible to deduce the electromagnetic torque expression, assuming \ref{hyp:constant_airgap} \cite[p. 459]{ref:electrical_modeling}. This can be further simplified by substituting equations \ref{eq:e_a} through \ref{eq:e_c} in the result. The final expression is
+    Assuming constant a constant air gap in the motor, an analysis of the consumed power of the machine yields the electromagnetic torque expression \cite[p. 459]{ref:electrical_modeling}. This can be further simplified by substituting equations \ref{eq:e_a} through \ref{eq:e_c} in the result. The final expression is
 
     \begin{equation}
         T_e = \frac{K_t}{2}.\Big(f_a(\theta_e).i_a + f_b(\theta_e).i_b + f_c(\theta_e).i_c\Big).
@@ -204,7 +157,7 @@
         \label{fig:mechanical_subsys}
     \end{figure}
 
-    Applying Newton's second law to the motor's rotor, together with assumption \ref{hyp:rigid_bodies} we obtain the following equation
+    Applying Newton's second law to the motor's rotor, we obtain the following equation
 
     \begin{equation}
         J.\frac{d^2\theta_m}{dt^2}=T_e-T_f-T_l,
@@ -213,7 +166,7 @@
 
     where $J$ is the motor's rotor inertia, $T_f$ is the resistance torque due to friction and $T_l$ is the torque applied by the load to the rotor.
 
-    Because of \ref{hyp:friction_model}, $T_f$ can be decomposed as viscous friction (referred to as $T_{f1}$) and Coulomb friction (referred to as $T_{f2}$)
+    In order to provide an accurate motor model for a wide range of angular velocities, not only viscous friction must considered in the model. Therefore, $T_f$ is decomposed as viscous friction (referred to as $T_{f1}$) and Coulomb friction (referred to as $T_{f2}$)
 
     \begin{equation}
         T_f = T_{f1} + T_{f2}.
@@ -245,7 +198,7 @@
 
 
     \bibliographystyle{plain}
-    \bibliography{bibliography.bib}
+    \bibliography{bibliography}
 
 
 \end{document}
