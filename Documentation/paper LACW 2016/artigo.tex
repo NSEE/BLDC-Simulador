@@ -45,12 +45,12 @@
 
     \newpage
 
-%    Primeiramente vamos definir o sistema de interesee. O que que vamos analisar de fato. Modelo matemático do que?
-%
-%    Vamos desenvolver o modelo matemático para um BLDC.
+    The first step to obtain a model of the system's dynamic behavior was to separate it into two smaller coupled subsystems. Because of the electromechanical characteristic of BLDCs, it's natural to separate it into an electrical and a mechanical part.
 
+    All of the electric and magnetic parts of the system (e.g., windings, coils) are lumped together in the electrical subsystem,
+    to which the inputs are the voltages in each of the phases and the output is the electromagnetic torque that will be applied to the shaft.  On the other hand, the mechanical parts and variables --- such as angular displacement, inertia, friction --- are part of the mechanical subsystem, with the electromagnetic torque as input and the angular velocity of the motor's shaft as its output.
 
-%    Para fazer um modelo desse sistema, começamos quebrando ele em dois subsistemas mais simples. Um subsist mecanico e um elétrico. O susbsitema elétrico é a parte elétrica mesmo, cuja entrada é a tensão em cada uma das bobinas e a saída é o torque que será aplicado no eixo do motor. O subsistema elétrico é a parte mecânica do motor, relacionada ao movimento do eixo; é o subsistema cuja entrada é o torque aplicado no eixo e a saída é a velocidade angular do eixo do motor. A seguir cada um dos subsistemas será analisado mais aprofundadamente.
+    The following sections analyze each of these subsystems in more detail, in order to obtain the mathematical relations between the relevant variables.
 
 
     \subsection{Electrical subsystem analysis}
